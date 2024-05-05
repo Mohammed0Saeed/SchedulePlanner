@@ -1,5 +1,6 @@
 import csv
 from lib import teacher
 from lib import course
+from lib import subjects
 
-course.edit("./dataBase/courses.csv", "e")
+subjects.edit("./dataBase/subjects.csv", 'e')
