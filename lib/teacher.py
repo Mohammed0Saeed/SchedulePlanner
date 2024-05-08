@@ -6,20 +6,31 @@ def add(fileName):
     # store the teacher in form of classes
     class teacher:
         name = '',
-        subjects = [],
-        course = [],
-        history = []
+        subjects = '',
+        course = '',
+        history = '',
+        d_prefrence = '',
+        t_prefrence = '',    
 
     teacher.name = input("Enter a name: ")
-    teacher.subjects = input("Enter the subjects: ").split(",")
-    teacher.course = input("Enter the letter of the course: ").split(",")
-    teacher.history.append("N/A")
+    teacher.subjects = input("Enter the subjects: ")
+    teacher.course = input("Enter the letter of the course: ")
+    teacher.history = "N/A"
+    teacher.d_prefrence = input("Enter a day prefrence: ")
+    teacher.t_prefrence = input("Enter a time prefrence (early/late): ")
 
     # append the new teacher to the list
     with open(fileName, "a", newline="") as teachersList:
-        writer = csv.DictWriter(teachersList, fieldnames=["name", "subjects", "course", "history"])
+        writer = csv.DictWriter(teachersList, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
         writer.writerow(
-            {"name": teacher.name, "subjects": teacher.subjects, "course": teacher.course, "history": teacher.history})
+            {
+                "name": teacher.name,
+                "subjects": teacher.subjects,
+                "course": teacher.course,
+                "history": teacher.history,
+                "d_prefrence": teacher.d_prefrence,
+                "t_prefrence": teacher.t_prefrence
+            })
 
 # edit or delete an element
 def edit(fileName, type):
@@ -28,7 +39,7 @@ def edit(fileName, type):
 
     # add every row in the file to an array
     with open(fileName) as teacherList:
-        reader = csv.DictReader(teacherList, fieldnames=["name", "subjects", "course", "history"])
+        reader = csv.DictReader(teacherList, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
         for row in reader:
             fileList.append(row)
 
@@ -53,25 +64,31 @@ def edit(fileName, type):
                       row['course'] = input("new courses: ")
                   case "history":
                       row['history'] = input("edit history: ")
+                  case "d_prefrence":
+                      row['d_prefrence'] = input("edit day prefrence: ")
+                  case "t_prefrence":
+                      row['t_prefrence'] = input("edit time prefrence: ")
                   case _:
                       raise ValueError
               break
 
       # upload the data to the file
       with open(fileName, "w", newline='') as teacherFile:
-          writer = csv.DictWriter(teacherFile, fieldnames=['name', 'subjects', 'course', 'history'])
+          writer = csv.DictWriter(teacherFile, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
           for row in fileList:
               writer.writerow({
                   'name': row['name'],
                   'subjects': row['subjects'],
                   'course': row['course'],
-                  'history': row['history']
+                  'history': row['history'],
+                  'd_prefrence': row['d_prefrence'],
+                  't_prefrence': row['t_prefrence']
               })
 
     elif type == "d":
       # upload the data to the file
       with open(fileName, "w", newline='') as teacherFile:
-          writer = csv.DictWriter(teacherFile, fieldnames=['name', 'subjects', 'course', 'history'])
+          writer = csv.DictWriter(teacherFile, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
 
           # add all the elements except the deleted element
           for row in fileList:
@@ -80,7 +97,9 @@ def edit(fileName, type):
                   'name': row['name'],
                   'subjects': row['subjects'],
                   'course': row['course'],
-                  'history': row['history']
+                  'history': row['history'],
+                  'd_prefrence': row['d_prefrence'],
+                  't_prefrence': row['t_prefrence']
                 })
     else:
         print(f"Invalid input for 'edit({fileName}, '{type}')'")
