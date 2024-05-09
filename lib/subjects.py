@@ -1,5 +1,6 @@
 import csv
-
+import sys
+# add a subject to the dataBase
 def add(fileName):
     # store the subject in form of classes
     class subject:
@@ -16,6 +17,7 @@ def add(fileName):
         writer = csv.DictWriter(subjectList, fieldnames=["name", "course", "count"])
         writer.writerow({"name": subject.name, "course": subject.course, "count": subject.count})
 
+# edit or delete a data from the list
 def edit(fileName, type):
     # load the file to this array
     fileList = []
@@ -76,3 +78,23 @@ def edit(fileName, type):
                 })
     else:
         print(f"Invalid input for 'edit({fileName}, '{type}')'")
+    
+# read subject's data
+def read(fileName, subject):
+    with open(fileName) as cFile:
+        reader = csv.DictReader(cFile, fieldnames=['name', 'course', 'count'])
+        for row in reader:
+            if row['name'] == subject:
+                return row
+        
+        sys.exit("Not found!")
+
+# read all the data from the dataBase
+def readAll(fileName):
+    dataBase = []
+    with open(fileName) as cFile:
+        reader = csv.DictReader(cFile, fieldnames=['name', 'course', 'count'])
+        for row in reader:
+            dataBase.append(row)
+    
+    return dataBase

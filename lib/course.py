@@ -1,4 +1,5 @@
 import csv
+import sys
 
 # add a course to the list of courses
 def add(fileName):
@@ -83,3 +84,23 @@ def edit(fileName, type):
                 })
     else:
         print(f"Invalid input for 'edit({fileName}, '{type}')'")
+
+# read a specific course data
+def read(fileName, course):
+    with open(fileName) as cFile:
+        reader = csv.DictReader(cFile, fieldnames=["name", "subjects", "blocks", "history"])
+        for row in reader:
+            if row['name'] == course:
+                return row
+        
+        sys.exit("Not found!")
+
+# get all the data from the dataBase
+def readAll(fileName):
+    dataBase = []
+    with open(fileName) as cFile:
+        reader = csv.DictReader(cFile, fieldnames=['name', 'subjects', 'blocks', 'history'])
+        for row in reader:
+            dataBase.append(row)
+    
+    return dataBase

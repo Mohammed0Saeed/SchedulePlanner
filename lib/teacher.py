@@ -1,4 +1,5 @@
 import csv
+import sys
 # library for teacher file functions
 
 # add a teacher to an existing list
@@ -103,3 +104,23 @@ def edit(fileName, type):
                 })
     else:
         print(f"Invalid input for 'edit({fileName}, '{type}')'")
+
+# read teacher's data
+def read(fileName, teacher):
+    with open(fileName) as cFile:
+        reader = csv.DictReader(cFile, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
+        for row in reader:
+            if row['name'] == teacher:
+                return row
+        
+        sys.exit("Not found!")
+
+# read all the data from the dataBase
+def readAll(fileName):
+    dataBase = []
+    with open(fileName) as cFile:
+        reader = csv.DictReader(cFile, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
+        for row in reader:
+            dataBase.append(row)
+    
+    return dataBase
