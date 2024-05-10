@@ -71,20 +71,31 @@ classCount = int(subjects.read("dataBase/subjects.csv", 'DEU')['count']) + 1
 randDays = []
 
 # choose random days for the subject
-for i in range(round(classCount / 2) + 1):
+while True:
   day = randint(1, 5)
   if day not in randDays:
     randDays.append(day)
 
+  if len(randDays) == round(classCount / 2):
+    break
+
 # fill the plan with the chosen subject
-i = 0
-while classCount != 0:
-  for j in range(0, len(randDays)):
-    plan[randDays[j] - 1][i] = 'DEU'
-    classCount -= 1
-    if classCount == 0:
+i = 0 # blocks
+while True:
+  j = 0 # days
+  while True:
+    if plan[randDays[j] - 1][i] == '-':
+      if i > 0:
+        i -= 1
+      plan[randDays[j] - 1][i] = 'DEU'
+      j += 1
+    else:
+      i += 1
+    if j == len(randDays):
       break
-  i += 1
+  i =+ 1
+  
+# i stopped here
 
 for row in plan:
   print(row)
