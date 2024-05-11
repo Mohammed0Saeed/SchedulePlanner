@@ -66,34 +66,38 @@ plan = [
   ['-', '-', '-', '-']
 ]
 
-# get the number of blocks from subjects.csv
-classCount = int(subjects.read("dataBase/subjects.csv", 'DEU')['count']) + 1
-randDays = []
+for sub in avTeacher:
+  # get the number of blocks from subjects.csv
+  classCount = int(subjects.read("dataBase/subjects.csv", sub)['count']) + 1
+  randDays = []
 
-# choose random days for the subject
-while True:
-  day = randint(1, 5)
-  if day not in randDays:
-    randDays.append(day)
+  # choose random days for the subject
+  while True:
+    day = randint(1, 5)
+    if day not in randDays:
+      randDays.append(day)
 
-  if len(randDays) == round(classCount / 2):
-    break
+    if len(randDays) == round(classCount / 2):
+      break
 
-# fill the plan with the chosen subject
-i = 0 # blocks
-while True:
+  # fill the plan with the chosen subject
+  i = 0 # blocks
   j = 0 # days
   while True:
-    if plan[randDays[j] - 1][i] == '-':
-      if i > 0:
-        i -= 1
-      plan[randDays[j] - 1][i] = 'DEU'
-      j += 1
+    while True:
+      if plan[randDays[j] - 1][i] == '-':
+        plan[randDays[j] - 1][i] = sub
+        classCount -= 1
+        j += 1
+      else:
+        i += 1
+      if j == len(randDays) or classCount == 0:
+        break
+    i = 0
+    if classCount != 0:
+      j = 0
     else:
-      i += 1
-    if j == len(randDays):
       break
-  i =+ 1
   
 # i stopped here
 
