@@ -68,7 +68,7 @@ plan = [
 
 for sub in avTeacher:
   # get the number of blocks from subjects.csv
-  classCount = int(subjects.read("dataBase/subjects.csv", sub)['count']) + 1
+  classCount = int(subjects.read("dataBase/subjects.csv", sub)['count'])
   randDays = []
 
   # choose random days for the subject
@@ -77,29 +77,45 @@ for sub in avTeacher:
     if day not in randDays:
       randDays.append(day)
 
-    if len(randDays) == round(classCount / 2):
+    if len(randDays) == classCount:
       break
 
   # fill the plan with the chosen subject
   i = 0 # blocks
   j = 0 # days
+  c = 0 # iterator through the random days array
+  overindex = False
   while True:
     while True:
-      if plan[randDays[j] - 1][i] == '-':
-        plan[randDays[j] - 1][i] = sub
+      # set the j to one of the random days
+      if overindex == False:
+        j = randDays[c] - 1
+      
+      # check if the day is empty
+      if plan[j][i] == "-":
+        plan[j][i] = sub
         classCount -= 1
-        j += 1
+        # check that the value of c is not out of range 
+        if c < len(randDays) - 1:
+          c += 1
+          i = 0
       else:
-        i += 1
-      if j == len(randDays) or classCount == 0:
-        break
-    i = 0
-    if classCount != 0:
-      j = 0
-    else:
+        if i < 3 and classCount != 0:
+          i += 1
+        elif i >= 3:
+            overindex = True
+            if 0 < j < 4:
+              j += 1
+            else:
+              j = 0
+        else:
+          break
+    if classCount == 0:
       break
-  
-# i stopped here
-
+    else:
+      c = 0
+      i = 0
+    
+    
 for row in plan:
   print(row)
