@@ -81,41 +81,47 @@ for sub in avTeacher:
       break
 
   # fill the plan with the chosen subject
-  i = 0 # blocks
-  j = 0 # days
-  c = 0 # iterator through the random days array
-  overindex = False
+  i = 0 # counter for the blocks
+  j = 0 # counter for the days
+  c = 0 # counter through the days array
   while True:
     while True:
-      # set the j to one of the random days
-      if overindex == False:
-        j = randDays[c] - 1
-      
-      # check if the day is empty
+      # set j to the first chosen day
+      j = randDays[c] - 1
+      #check if the chosen place is free
       if plan[j][i] == "-":
         plan[j][i] = sub
+        # take one from the class count to indicate that the class is given in the table
         classCount -= 1
-        # check that the value of c is not out of range 
-        if c < len(randDays) - 1:
-          c += 1
-          i = 0
+        break
       else:
-        if i < 3 and classCount != 0:
-          i += 1
-        elif i >= 3:
-            overindex = True
-            if 0 < j < 4:
-              j += 1
-            else:
-              j = 0
-        else:
-          break
+        # if the place is full, take the next place
+        i += 1
+
+      # if we are out of the index, chosen another day and chose another day
+      if i > 3:
+        if randDays[c] < 4: randDays[c] += 1
+        else: randDays[c] = 0
+        i = 0
+      if classCount == 0:
+        break
+    
+    i = 0
+    c += 1
     if classCount == 0:
-      break
-    else:
-      c = 0
-      i = 0
+        break
     
-    
-for row in plan:
-  print(row)
+with open(f"results/{selectedCourse['name']}_plan.csv", "w", newline='') as newPlan:
+  writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
+  writer.writeheader()
+  days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
+  i = 0
+  for row in plan:
+    writer.writerow(
+      {"days": days[i],
+      "Block1" : row[0],
+      "Block2" : row[1],
+      "Block3" : row[2],
+      "Block4" : row[3]}
+    )
+    i += 1
