@@ -1,5 +1,6 @@
 import csv
 import sys
+from random import randint
 # library for teacher file functions
 
 # add a teacher to an existing list
@@ -124,3 +125,22 @@ def readAll(fileName):
             dataBase.append(row)
     
     return dataBase
+
+def choose(course):
+    # show the availabe teachers
+    avTeacher = {}
+    for s in course['subjects'].split(','):
+        tmpList = []
+        teachersList = []
+    for t in readAll("dataBase/teachers.csv"):
+        if s in t['subjects'].split(','):
+            tmpList.append(t['name'])
+    
+    while True:
+        randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
+        if randTeacher not in teachersList:
+            teachersList = randTeacher
+            avTeacher[s] = randTeacher
+            break
+    
+    return avTeacher
