@@ -7,7 +7,7 @@ from random import randint
 def main():
   # getting all the data of a course
   selectedCourse = course.read("dataBase/courses.csv", input("Course: "))
-  for i in range(100):
+  for i in range(1):
     createRandomCourse(selectedCourse, ("TF2_" + str(i)))
     checkPlan("results/TF2_" + str(i) + "_plan.csv")
 
@@ -34,7 +34,10 @@ def createRandomCourse(selectedCourse, fileName):
         tmpList.append(t['name'])
     
     while True:
-      randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
+      if len(tmpList) != 0:
+        randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
+      else:
+        print(f"A problem occured in {s}")
       if randTeacher not in teachersList:
         teachersList = randTeacher
         avTeacher[s] = randTeacher

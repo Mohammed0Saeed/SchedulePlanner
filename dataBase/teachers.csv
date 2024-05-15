@@ -11,7 +11,7 @@ WG0,"DEU1,DEU2","TF1,WF2",N/A, none, none
 WDR,"MTH,GMT","TF1,WF2",N/A, none, none
 RI0,"GCH,DEU1,DEU2","GF1,WF2",N/A, none, none
 OST,"GEO,DEU1,DEU2","GF1,WF2",N/A, none, none
-RE0,"DEU1,DEU2,GCH,BWL","GF1,WF2",N/A, none, none
+RE0,"BWL,DEU1,DEU2,GCH","GF1,WF2",N/A, none, none
 KRO,LIT,GF1,N/A, none, none
 SCH,"DEU1,DEU2",GF1,N/A, none, none
 SD0,PHY,MF1,N/A, none, none
