@@ -1,0 +1,6 @@
+days,Block1,Block2,Block3,Block4
+Mo,ANA,DEU2,PHY,CHE
+Di,DEU1,GMT,DEU2,PHY
+Mi,DEU1,ANA,PHY,INF
+Do,DEU1,GMT,CHE,-
+Fr,DEU2,INF,-,-

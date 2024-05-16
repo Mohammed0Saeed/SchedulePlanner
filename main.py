@@ -47,6 +47,8 @@ def createRandomCourse(selectedCourse, fileName):
   teachersData = []
   for _teacher in avTeacher:
     teachersData.append(teacher.read("dataBase/teachers.csv", avTeacher[_teacher]))
+  
+  print(avTeacher)
 
   # creating 2d array to store the data in form of table
   """
@@ -127,5 +129,10 @@ def createRandomCourse(selectedCourse, fileName):
       i += 1
 # you should sort the teachers according to their prefrence
 # you should add a function to update the history of a course
+# a bug that must be solved
+"""
+Course: TF2
+{'DEU1': 'VOR', 'GMT': 'KRZ', 'ANA': 'TAV', 'DEU2': 'OST', 'PHY': 'KEM', 'CHE': 'KRZ', 'INF': 'TAV'} 
+"""
 
 main()
