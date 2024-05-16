@@ -1,7 +1,5 @@
 import csv
-from lib import teacher
-from lib import course
-from lib import subjects
+from lib import teacher, course, subjects
 from random import randint
 
 def main():
@@ -30,20 +28,21 @@ def chooseRandomTeachers(course):
   for subject in _subjects:
     tmpList = []
     for t in teacher.readAll("dataBase/teachers.csv"):
-      if subject in t['subjects'].split(','):
+      smth = t['subjects'].split(',')
+      print(subject)
+      print(smth)
+      if smth == ['subjects']:
+        continue
+      if subject in smth:
         tmpList.append(t['name'])
       while True:
-        try:
-          if len(tmpList) == 0:
-            randChoice = tmpList[0]
-          else:
-            randChoice = tmpList[randint(0, len(tmpList) - 1)]
-            
-          if randChoice not in chosenTeacher:
-            chosenTeacher.append(t)
-            break
+        if len(tmpList) == 0:
+          randChoice = tmpList[0]
+        else:
+          randChoice = tmpList[randint(0, len(tmpList) - 1)]
           
-        except:
+        if randChoice not in chosenTeacher:
+          chosenTeacher.append(t)
           break
 
     print(subject, tmpList, randChoice)
@@ -131,7 +130,14 @@ def createRandomCourse(selectedCourse, fileName):
 # a bug that must be solved
 """
 Course: TF2
-{'DEU1': 'VOR', 'GMT': 'KRZ', 'ANA': 'TAV', 'DEU2': 'OST', 'PHY': 'KEM', 'CHE': 'KRZ', 'INF': 'TAV'} 
+{
+  'DEU1': 'VOR', 
+  'GMT': 'KRZ', 
+  'ANA': 'TAV', 
+  'DEU2': 'OST', 
+  'PHY': 'KEM', 
+  'CHE': 'KRZ', 
+  'INF': 'TAV'} 
 """
 
 main()
