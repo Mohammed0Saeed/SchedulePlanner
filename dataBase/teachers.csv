@@ -5,7 +5,7 @@ TAV,"MTH,INF,GMT,ANA","TF1,TF2,MF1",N/A, none, none
 MTC,"BIO,CHE","TF2,MF1",N/A, none, none
 KEM,PHY,"TF1,TF2",N/A, none, none
 KRZ,"CHE,MTH,GMT,ANA","TF1,TF2,MF1",N/A, none, none
-KYF,"MTH,INF,GMT","TF1,TF2",N/A, none, none
+KYF,"MTH,INF,GMT,ANA","TF1,TF2",N/A, none, none
 VOR,"DEU1,DEU2","TF1,MF1",N/A, none, none
 WG0,"DEU1,DEU2","TF1,WF2",N/A, none, none
 WDR,"MTH,GMT","TF1,WF2",N/A, none, none

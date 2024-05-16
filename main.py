@@ -7,9 +7,10 @@ from random import randint
 def main():
   # getting all the data of a course
   selectedCourse = course.read("dataBase/courses.csv", input("Course: "))
-  for i in range(1):
-    createRandomCourse(selectedCourse, ("TF2_" + str(i)))
-    checkPlan("results/TF2_" + str(i) + "_plan.csv")
+  chooseRandomTeachers(selectedCourse)
+  # for i in range(1):
+  #   createRandomCourse(selectedCourse, ("TF2_" + str(i)))
+  #   checkPlan(f"results/{selectedCourse['name']}_" + str(i) + "_plan.csv")
 
 def checkPlan(fileName):
   with open(fileName) as cFile:
@@ -22,34 +23,32 @@ def checkPlan(fileName):
       
       if empty >= 3:
         print(fileName, "is good")
-    
-def createRandomCourse(selectedCourse, fileName):
-  # show the availabe teachers
-  avTeacher = {} #teacher.choose(selectedCourse)
-  for s in selectedCourse['subjects'].split(','):
+
+def chooseRandomTeachers(course):
+  chosenTeacher = []
+  _subjects = course['subjects'].split(',')
+  for subject in _subjects:
     tmpList = []
-    teachersList = []
     for t in teacher.readAll("dataBase/teachers.csv"):
-      if s in t['subjects'].split(','):
+      if subject in t['subjects'].split(','):
         tmpList.append(t['name'])
-    
-    while True:
-      if len(tmpList) != 0:
-        randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
-      else:
-        print(f"A problem occured in {s}")
-      if randTeacher not in teachersList:
-        teachersList = randTeacher
-        avTeacher[s] = randTeacher
-        break
+      while True:
+        try:
+          if len(tmpList) == 0:
+            randChoice = tmpList[0]
+          else:
+            randChoice = tmpList[randint(0, len(tmpList) - 1)]
+            
+          if randChoice not in chosenTeacher:
+            chosenTeacher.append(t)
+            break
+          
+        except:
+          break
 
-  # storing all informations related to the chosen teachers
-  teachersData = []
-  for _teacher in avTeacher:
-    teachersData.append(teacher.read("dataBase/teachers.csv", avTeacher[_teacher]))
-  
-  print(avTeacher)
+    print(subject, tmpList, randChoice)
 
+def createRandomCourse(selectedCourse, fileName):
   # creating 2d array to store the data in form of table
   """
   the form of data is in this shape
@@ -68,7 +67,7 @@ def createRandomCourse(selectedCourse, fileName):
     ['-', '-', '-', '-']
   ]
 
-  for sub in avTeacher:
+  for sub in selectedCourse['subjects'].split(','):
     # get the number of blocks from subjects.csv
     classCount = int(subjects.read("dataBase/subjects.csv", sub)['count'])
     randDays = []
