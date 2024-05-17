@@ -1,13 +1,14 @@
 import csv
-from lib import teacher
-from lib import course
-from lib import subjects
+from lib import teacher, course, subjects
 from random import randint
+from sys import exit
 
 def main():
   # getting all the data of a course
-  selectedCourse = course.read("dataBase/courses.csv", input("Course: "))
-  chooseRandomTeachers(selectedCourse)
+  #selectedCourse = course.read("dataBase/courses.csv", input("Course: "))
+    selectedCourse = course.read("dataBase/courses.csv", "TF2")
+    for i in range(1):
+      chooseRandomTeachers(selectedCourse)
   # for i in range(1):
   #   createRandomCourse(selectedCourse, ("TF2_" + str(i)))
   #   checkPlan(f"results/{selectedCourse['name']}_" + str(i) + "_plan.csv")
@@ -32,21 +33,23 @@ def chooseRandomTeachers(course):
     for t in teacher.readAll("dataBase/teachers.csv"):
       if subject in t['subjects'].split(','):
         tmpList.append(t['name'])
-      while True:
-        try:
-          if len(tmpList) == 0:
-            randChoice = tmpList[0]
-          else:
+        while True:
+          try:
             randChoice = tmpList[randint(0, len(tmpList) - 1)]
-            
-          if randChoice not in chosenTeacher:
-            chosenTeacher.append(t)
-            break
-          
-        except:
-          break
+              
+            if randChoice in chosenTeacher:
+              continue
+            else:
+              chosenTeacher.append(t['name'])
+              break
+          except:
+            exit(f"{subject} has a problem")
 
-    print(subject, tmpList, randChoice)
+  # if len(chosenTeacher) != 7:
+  #   print("WTF?")
+  # else:
+    print(tmpList, len(tmpList))
+  print(chosenTeacher)
 
 def createRandomCourse(selectedCourse, fileName):
   # creating 2d array to store the data in form of table
