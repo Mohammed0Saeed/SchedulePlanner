@@ -25,6 +25,7 @@ def checkPlan(fileName):
       if empty >= 3:
         print(fileName, "is good")
 
+# a trail to see if this code would work
 def chooseRandomTeachers(course):
   chosenTeacher = []
   _subjects = course['subjects'].split(',')
