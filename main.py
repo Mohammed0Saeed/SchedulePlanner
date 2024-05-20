@@ -25,6 +25,7 @@ def checkPlan(fileName):
       if empty >= 3:
         print(fileName, "is good")
 
+# a trail to see if this code would work
 def chooseRandomTeachers(course):
     data = teacher.readAll("dataBase/teachers.csv")[1:]
     courseSubjects = subjects.sort(course['subjects'].split(','))
