@@ -98,3 +98,13 @@ def readAll(fileName):
             dataBase.append(row)
     
     return dataBase
+
+# sort the subjects according to their number of blocks
+def sort(array):
+    Dict = {}
+    for i in range(len(array)-1):
+        for j in range(len(array)-1-i):
+            if int(read("dataBase/subjects.csv", array[j])['count']) > int(read("dataBase/subjects.csv", array[j + 1])['count']):
+                array[j], array[j + 1] = array[j + 1], array[j]
+
+    return array

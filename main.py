@@ -26,30 +26,24 @@ def checkPlan(fileName):
         print(fileName, "is good")
 
 def chooseRandomTeachers(course):
-  chosenTeacher = []
-  _subjects = course['subjects'].split(',')
-  for subject in _subjects:
-    tmpList = []
-    for t in teacher.readAll("dataBase/teachers.csv"):
-      if subject in t['subjects'].split(','):
-        tmpList.append(t['name'])
-        while True:
-          try:
-            randChoice = tmpList[randint(0, len(tmpList) - 1)]
-              
-            if randChoice in chosenTeacher:
-              continue
-            else:
-              chosenTeacher.append(t['name'])
-              break
-          except:
-            exit(f"{subject} has a problem")
+    data = teacher.readAll("dataBase/teachers.csv")[1:]
+    courseSubjects = subjects.sort(course['subjects'].split(','))
+    #print(courseSubjects)
+    chosen = []
+    for subj in courseSubjects:
+      tmpList = []
+      for te in data:
+        if subj in te['subjects'].split(','):
+          tmpList.append(te['name'])
+      while True:
+        randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
+        if randTeacher not in chosen:
+          chosen.append(randTeacher)
+          break
 
-  # if len(chosenTeacher) != 7:
-  #   print("WTF?")
-  # else:
-    print(tmpList, len(tmpList))
-  print(chosenTeacher)
+      print(f"{subj}: {tmpList}, and the chosen is {randTeacher}")
+    print(chosen)
+
 
 def createRandomCourse(selectedCourse, fileName):
   # creating 2d array to store the data in form of table
