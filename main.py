@@ -5,32 +5,64 @@ from sys import exit
 
 def main():
   # getting all the data of a course
-  #selectedCourse = course.read("dataBase/courses.csv", input("Course: "))
-    selectedCourse = course.read("dataBase/courses.csv", "TF2")
-    for i in range(1):
-      chooseRandomTeachers(selectedCourse)
-  # for i in range(1):
-  #   createRandomCourse(selectedCourse, ("TF2_" + str(i)))
-  #   checkPlan(f"results/{selectedCourse['name']}_" + str(i) + "_plan.csv")
+    selectedCourse = ["TF1", "TF2", "MF1", "WF2", "GF1"]
 
-def checkPlan(fileName):
-  with open(fileName) as cFile:
-      reader = csv.DictReader(cFile, fieldnames=['days', 'block1', 'block2', 'block3', 'block4'])
-      empty = 0
+    bigPlan = []
+    for _course in selectedCourse:
+      while True:
+        plan = createRandomCourse(course.read("dataBase/courses.csv", _course), f"{_course}")
+        if checkPlan(plan):
+          bigPlan.append(plan)
+          break
+    # check if the big plan does not have two class for a teacher at the same time
+    
+    for i in range(len(bigPlan)):
+      for row in bigPlan[i]:
+        print(row)
+      print('\n')
+    
+    for j in range(len(bigPlan)):
+      with open(f"results/plan.csv", "a", newline='') as newPlan:
+        writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
+        days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
+        i = 0
+        writer.writerow(
+            {"days" : selectedCourse[j],
+            "Block1" : "---",
+            "Block2" : "---",
+            "Block3" : "---",
+            "Block4" : "---"}
+          )
+        writer.writeheader()
+        for row in bigPlan[j]:
+          writer.writerow(
+            {"days": days[i],
+            "Block1" : row[0],
+            "Block2" : row[1],
+            "Block3" : row[2],
+            "Block4" : row[3]}
+          )
+          i += 1
 
-      for row in reader:
-        if row['block4'] == "-":
-          empty += 1
-      
-      if empty >= 3:
-        print(fileName, "is good")
+# check if the blocks in the plan are given equally
+def checkPlan(array):
+    empty = 0
+    for i in range(len(array)):
+      if array[i][3] == "-":
+        empty += 1
+    
+    if empty >= 3:
+      return True
+    return False
+
+# check if no teacher have two classes at the same time
 
 # a trail to see if this code would work
 def chooseRandomTeachers(course):
     data = teacher.readAll("dataBase/teachers.csv")[1:]
     courseSubjects = subjects.sort(course['subjects'].split(','))
     #print(courseSubjects)
-    chosen = []
+    chosen = {}
     for subj in courseSubjects:
       tmpList = []
       for te in data:
@@ -39,13 +71,12 @@ def chooseRandomTeachers(course):
       while True:
         randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
         if randTeacher not in chosen:
-          chosen.append(randTeacher)
+          chosen[subj] = randTeacher
           break
 
-      print(f"{subj}: {tmpList}, and the chosen is {randTeacher}")
-    print(chosen)
+    return chosen 
 
-
+# create a random course and return an array
 def createRandomCourse(selectedCourse, fileName):
   # creating 2d array to store the data in form of table
   """
@@ -79,6 +110,7 @@ def createRandomCourse(selectedCourse, fileName):
       if len(randDays) == classCount:
         break
 
+    chosenTeachers = chooseRandomTeachers(selectedCourse)
     # fill the plan with the chosen subject
     i = 0 # counter for the blocks
     j = 0 # counter for the days
@@ -89,7 +121,9 @@ def createRandomCourse(selectedCourse, fileName):
         j = randDays[c] - 1
         #check if the chosen place is free
         if plan[j][i] == "-":
-          plan[j][i] = sub
+          plan[j][i] = f"{sub}:{chosenTeachers[sub]}"
+          days = ["Mo", "Di", "Mi", "Do", "Fr"]
+          teacher.autoEdit("dataBase/teachers.csv", chosenTeachers[sub], 'history', f"{selectedCourse['name']}:{days[j]}:{i+1}")
           # take one from the class count to indicate that the class is given in the table
           classCount -= 1
           break
@@ -110,26 +144,37 @@ def createRandomCourse(selectedCourse, fileName):
       if classCount == 0:
           break
       
-  with open(f"results/{fileName}_plan.csv", "w", newline='') as newPlan:
-    writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
-    writer.writeheader()
-    days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
-    i = 0
-    for row in plan:
-      writer.writerow(
-        {"days": days[i],
-        "Block1" : row[0],
-        "Block2" : row[1],
-        "Block3" : row[2],
-        "Block4" : row[3]}
-      )
-      i += 1
-# you should sort the teachers according to their prefrence
-# you should add a function to update the history of a course
-# a bug that must be solved
-"""
-Course: TF2
-{'DEU1': 'VOR', 'GMT': 'KRZ', 'ANA': 'TAV', 'DEU2': 'OST', 'PHY': 'KEM', 'CHE': 'KRZ', 'INF': 'TAV'} 
-"""
+    
+  # if checkPlan(plan):
+  #   with open(f"results/{fileName}_plan.csv", "w", newline='') as newPlan:
+  #     writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
+  #     writer.writeheader()
+  #     days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
+  #     i = 0
+  #     for row in plan:
+  #       writer.writerow(
+  #         {"days": days[i],
+  #         "Block1" : row[0],
+  #         "Block2" : row[1],
+  #         "Block3" : row[2],
+  #         "Block4" : row[3]}
+  #       )
+  #       i += 1
+  #   with open(f"results/plan.csv", "w", newline='') as newPlan:
+  #     writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
+  #     writer.writeheader()
+  #     days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
+  #     i = 0
+  #     for row in plan:
+  #       writer.writerow(
+  #         {"days": days[i],
+  #         "Block1" : row[0],
+  #         "Block2" : row[1],
+  #         "Block3" : row[2],
+  #         "Block4" : row[3]}
+  #       )
+  #       i += 1
+  #   return True
+  return plan
 
 main()

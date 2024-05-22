@@ -106,6 +106,60 @@ def edit(fileName, type):
     else:
         print(f"Invalid input for 'edit({fileName}, '{type}')'")
 
+# auto editing for the history
+def autoEdit(fileName, teacherName, data, change):
+    # load the file to this array
+    fileList = []
+
+    # add every row in the file to an array
+    with open(fileName) as teacherList:
+        reader = csv.DictReader(teacherList, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
+        for row in reader:
+            fileList.append(row)
+
+    # a key for the selected element
+    key = teacherName
+
+    # edit the data
+    # check if the element in the list
+    for row in fileList:
+        if row['name'] == key:
+            edit = data
+
+            # edit the selected data of the chosen element
+            match edit:
+                case "name":
+                    row['name'] = change
+                case "subjects":
+                    row['subjects'] = change
+                case "course":
+                    row['course'] = change
+                case "history":
+                    if row['history'] == 'none' or row['history'] == change:
+                        row['history'] = f"{change},"
+                    else:
+                        row['history'].split(",").append(change)
+                case "d_prefrence":
+                    row['d_prefrence'] = change
+                case "t_prefrence":
+                    row['t_prefrence'] = change
+                case _:
+                    raise ValueError
+            break
+
+    # upload the data to the file
+    with open(fileName, "w", newline='') as teacherFile:
+        writer = csv.DictWriter(teacherFile, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
+        for row in fileList:
+            writer.writerow({
+                'name': row['name'],
+                'subjects': row['subjects'],
+                'course': row['course'],
+                'history': row['history'],
+                'd_prefrence': row['d_prefrence'],
+                't_prefrence': row['t_prefrence']
+            })
+
 # read teacher's data
 def read(fileName, teacher):
     with open(fileName) as cFile:
