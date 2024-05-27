@@ -135,10 +135,7 @@ def autoEdit(fileName, teacherName, data, change):
                 case "course":
                     row['course'] = change
                 case "history":
-                    if row['history'] == 'none' or row['history'] == change:
-                        row['history'] = f"{change},"
-                    else:
-                        row['history'].split(",").append(change)
+                    row["history"] = change
                 case "d_prefrence":
                     row['d_prefrence'] = change
                 case "t_prefrence":

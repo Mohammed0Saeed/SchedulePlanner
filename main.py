@@ -10,7 +10,7 @@ def main():
     bigPlan = []
     for _course in selectedCourse:
       while True:
-        plan = createRandomCourse(course.read("dataBase/courses.csv", _course), f"{_course}")
+        plan = createRandomCourse(course.read("dataBase/courses.csv", _course))
         if checkPlan(plan):
           bigPlan.append(plan)
           break
@@ -77,7 +77,7 @@ def chooseRandomTeachers(course):
     return chosen 
 
 # create a random course and return an array
-def createRandomCourse(selectedCourse, fileName):
+def createRandomCourse(selectedCourse):
   # creating 2d array to store the data in form of table
   """
   the form of data is in this shape
@@ -95,6 +95,8 @@ def createRandomCourse(selectedCourse, fileName):
     ['-', '-', '-', '-'],
     ['-', '-', '-', '-']
   ]
+  # use dictionary to store the data you need for the application
+  history = {}
 
   for sub in selectedCourse['subjects'].split(','):
     # get the number of blocks from subjects.csv
@@ -123,7 +125,7 @@ def createRandomCourse(selectedCourse, fileName):
         if plan[j][i] == "-":
           plan[j][i] = f"{sub}:{chosenTeachers[sub]}"
           days = ["Mo", "Di", "Mi", "Do", "Fr"]
-          teacher.autoEdit("dataBase/teachers.csv", chosenTeachers[sub], 'history', f"{selectedCourse['name']}:{days[j]}:{i+1}")
+          history.append(f"{selectedCourse['name']}:{days[j]}:{i}")
           # take one from the class count to indicate that the class is given in the table
           classCount -= 1
           break
@@ -143,7 +145,7 @@ def createRandomCourse(selectedCourse, fileName):
       c += 1
       if classCount == 0:
           break
-      
+    teacher.autoEdit("dataBase/teachers.csv", chosenTeachers[sub], "history", history)
     
   # if checkPlan(plan):
   #   with open(f"results/{fileName}_plan.csv", "w", newline='') as newPlan:
