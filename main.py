@@ -4,21 +4,17 @@ from random import randint
 
 def main():
   # getting all the data of a course
-    selectedCourse = ["TF1", "TF2", "MF1", "WF2", "GF1"]
-
-    bigPlan = []
-    for _course in selectedCourse:
-      while True:
-        plan = createRandomCourse(course.read("dataBase/courses.csv", _course))
-        if checkers.checkPlan(plan):
-          bigPlan.append(plan)
-          break
-    # check if the big plan does not have two class for a teacher at the same time
-    
-    for i in range(len(bigPlan)):
-      for row in bigPlan[i]:
-        print(row)
-      print('\n')
+    while True:
+      selectedCourse = ["TF1", "TF2", "MF1", "WF2", "GF1"]
+      bigPlan = []
+      for _course in selectedCourse:
+        while True:
+          plan = createRandomCourse(course.read("dataBase/courses.csv", _course))
+          if checkers.checkPlan(plan):
+            bigPlan.append(plan)
+            break
+      if checkers.isOnlyOne(bigPlan) == False:
+        break
     
     for j in range(len(bigPlan)):
       with open(f"results/plan.csv", "a", newline='') as newPlan:

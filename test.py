@@ -1,19 +1,17 @@
-arr = [
-  [
-    ["000", "001", "002"],
-    ["010", "011", "012"],
-    ["020", "021", "022"]
-  ],
-  [
-    ["100", "101", "102"],
-    ["110", "111", "112"],
-    ["120", "121", "122"]
-  ],
-  [
-    ["200", "201", "202"],
-    ["210", "211", "212"],
-    ["220", "221", "222"]
-  ]
-]
+def main():
+  arr = ["cat", "cat", "dog"]
+  print(repeatedValues(arr))
 
-print(arr[0][1][0])
+def repeatedValues(array):
+   for item in array:
+      i = 0
+      c = 0
+      while i < len(array):
+        if item == array[i]:
+          c += 1
+          if c == 2:
+             return f"{array[i]} is repeated"
+        i += 1
+          
+
+main()
