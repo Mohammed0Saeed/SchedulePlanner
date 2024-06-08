@@ -1,19 +1,19 @@
 name,subjects,course,history, d-prefrence, t-prefrence
-vBl,"DEU1,DEU2",TF2,"['WF2:Di:0', 'WF2:Mo:0', 'WF2:Mi:0']", none, none
-SHA,"DEU1,DEU2",TF2,"['TF2:Do:1', 'TF2:Mi:0', 'TF2:Di:3']", none, none
-TAV,"MTH,INF,GMT,ANA","TF1,TF2,MF1","['WF2:Mi:3', 'WF2:Do:1', 'WF2:Di:2']", none, none
-MTC,"BIO,CHE","TF2,MF1","['MF1:Do:1', 'MF1:Di:2']", none, none
-KEM,PHY,"TF1,TF2","['TF2:Fr:2', 'TF2:Do:3', 'TF2:Mi:1']", none, none
-KRZ,"CHE,MTH,GMT,ANA","TF1,TF2,MF1","['TF2:Fr:3', 'TF2:Mo:1']", none, none
-KYF,"MTH,INF,GMT,ANA","TF1,TF2","['WF2:Mo:2', 'WF2:Do:1', 'WF2:Fr:1']", none, none
-VOR,"DEU1,DEU2","TF1,MF1","['GF1:Mo:1', 'GF1:Di:1', 'GF1:Do:2']", none, none
-WG0,"DEU1,DEU2","TF1,WF2","['WF2:Do:0', 'WF2:Mi:0', 'WF2:Mo:1']", none, none
-WDR,"MTH,GMT","TF1,WF2","['TF2:Di:3', 'TF2:Mi:1']", none, none
-RI0,"GCH,DEU1,DEU2","GF1,WF2","['GF1:Mi:3', 'GF1:Fr:2', 'GF1:Do:3']", none, none
-OST,"GEO,DEU1,DEU2","GF1,WF2","['WF2:Di:1', 'WF2:Fr:0', 'WF2:Mi:2']", none, none
-RE0,"BWL,DEU1,DEU2,GCH","GF1,WF2","['GF1:Fr:1', 'GF1:Di:0', 'GF1:Mi:2']", none, none
-KRO,LIT,GF1,"['GF1:Mi:0', 'GF1:Do:0', 'GF1:Fr:0']", none, none
-SCH,"DEU1,DEU2",GF1,"['WF2:Mo:0', 'WF2:Do:0', 'WF2:Mi:0']", none, none
-SD0,PHY,MF1,"['MF1:Mo:1', 'MF1:Mo:2', 'MF1:Do:2']", none, none
-BU0,"DEU1,DEU2",MF1,"['WF2:Mi:1', 'WF2:Do:0', 'WF2:Mo:1']", none, none
-MSZ,"VWL,SOZ","GF1,WF2","['GF1:Do:1', 'GF1:Mi:1', 'GF1:Mo:0']", none, none
+vBl,"DEU1,DEU2",TF2,{}, none, none
+SHA,"DEU1,DEU2",TF2,{}, none, none
+TAV,"MTH,INF,GMT,ANA","TF1,TF2,MF1",{}, none, none
+MTC,"BIO,CHE","TF2,MF1",{}, none, none
+KEM,PHY,"TF1,TF2",{}, none, none
+KRZ,"CHE,MTH,GMT,ANA","TF1,TF2,MF1",{}, none, none
+KYF,"MTH,INF,GMT,ANA","TF1,TF2",{}, none, none
+VOR,"DEU1,DEU2","TF1,MF1",{}, none, none
+WG0,"DEU1,DEU2","TF1,WF2",{}, none, none
+WDR,"MTH,GMT","TF1,WF2",{}, none, none
+RI0,"GCH,DEU1,DEU2","GF1,WF2",{}, none, none
+OST,"GEO,DEU1,DEU2","GF1,WF2",{}, none, none
+RE0,"BWL,DEU1,DEU2,GCH","GF1,WF2",{}, none, none
+KRO,LIT,GF1,{}, none, none
+SCH,"DEU1,DEU2",GF1,{}, none, none
+SD0,PHY,MF1,{}, none, none
+BU0,"DEU1,DEU2",MF1,{}, none, none
+MSZ,"VWL,SOZ","GF1,WF2",{}, none, none

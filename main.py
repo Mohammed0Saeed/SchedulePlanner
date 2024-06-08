@@ -1,7 +1,6 @@
 import csv
-from lib import teacher, course, subjects
+from lib import teacher, course, subjects, checkers
 from random import randint
-from sys import exit
 
 def main():
   # getting all the data of a course
@@ -11,7 +10,7 @@ def main():
     for _course in selectedCourse:
       while True:
         plan = createRandomCourse(course.read("dataBase/courses.csv", _course))
-        if checkPlan(plan):
+        if checkers.checkPlan(plan):
           bigPlan.append(plan)
           break
     # check if the big plan does not have two class for a teacher at the same time
@@ -43,17 +42,6 @@ def main():
             "Block4" : row[3]}
           )
           i += 1
-
-# check if the blocks in the plan are given equally
-def checkPlan(array):
-    empty = 0
-    for i in range(len(array)):
-      if array[i][3] == "-":
-        empty += 1
-    
-    if empty >= 3:
-      return True
-    return False
 
 # check if no teacher have two classes at the same time
 
@@ -124,8 +112,6 @@ def createRandomCourse(selectedCourse):
         #check if the chosen place is free
         if plan[j][i] == "-":
           plan[j][i] = f"{sub}:{chosenTeachers[sub]}"
-          days = ["Mo", "Di", "Mi", "Do", "Fr"]
-          history.append(f"{selectedCourse['name']}:{days[j]}:{i}")
           # take one from the class count to indicate that the class is given in the table
           classCount -= 1
           break
@@ -147,36 +133,6 @@ def createRandomCourse(selectedCourse):
           break
     teacher.autoEdit("dataBase/teachers.csv", chosenTeachers[sub], "history", history)
     
-  # if checkPlan(plan):
-  #   with open(f"results/{fileName}_plan.csv", "w", newline='') as newPlan:
-  #     writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
-  #     writer.writeheader()
-  #     days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
-  #     i = 0
-  #     for row in plan:
-  #       writer.writerow(
-  #         {"days": days[i],
-  #         "Block1" : row[0],
-  #         "Block2" : row[1],
-  #         "Block3" : row[2],
-  #         "Block4" : row[3]}
-  #       )
-  #       i += 1
-  #   with open(f"results/plan.csv", "w", newline='') as newPlan:
-  #     writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
-  #     writer.writeheader()
-  #     days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
-  #     i = 0
-  #     for row in plan:
-  #       writer.writerow(
-  #         {"days": days[i],
-  #         "Block1" : row[0],
-  #         "Block2" : row[1],
-  #         "Block3" : row[2],
-  #         "Block4" : row[3]}
-  #       )
-  #       i += 1
-  #   return True
   return plan
 
 main()
