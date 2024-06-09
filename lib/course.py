@@ -104,3 +104,14 @@ def readAll(fileName):
             dataBase.append(row)
     
     return dataBase
+
+# get the name of the courses
+def get_coursesNames():
+    courses = readAll("dataBase/courses.csv")
+    courseNames = []
+
+    for course in courses:
+        if course["name"] != "name":
+            courseNames.append(course["name"])
+
+    return courseNames

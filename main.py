@@ -1,43 +1,47 @@
 import csv
+import os
 from lib import teacher, course, subjects, checkers
 from random import randint
 
 def main():
+  # clear the csv file before using 
+  os.remove("results/plan.csv")
   # getting all the data of a course
-    while True:
-      selectedCourse = ["TF1", "TF2", "MF1", "WF2", "GF1"]
-      bigPlan = []
-      for _course in selectedCourse:
-        while True:
-          plan = createRandomCourse(course.read("dataBase/courses.csv", _course))
-          if checkers.checkPlan(plan):
-            bigPlan.append(plan)
-            break
-      if checkers.isOnlyOne(bigPlan) == False:
-        break
-    
-    for j in range(len(bigPlan)):
-      with open(f"results/plan.csv", "a", newline='') as newPlan:
-        writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
-        days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
-        i = 0
+  while True:
+    selectedCourse = course.get_coursesNames()
+    bigPlan = []
+    for _course in selectedCourse:
+      while True:
+        plan = createRandomCourse(course.read("dataBase/courses.csv", _course))
+        if checkers.checkPlan(plan):
+          bigPlan.append(plan)
+          break
+    if checkers.isOnlyOne(bigPlan) == False:
+      break
+  
+  for j in range(len(bigPlan)):
+    with open(f"results/plan.csv", "a", newline='') as newPlan:
+      writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
+      days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
+      i = 0
+      writer.writerow(
+          {"days" : selectedCourse[j],
+          "Block1" : "---",
+          "Block2" : "---",
+          "Block3" : "---",
+          "Block4" : "---"}
+        )
+      writer.writeheader()
+      for row in bigPlan[j]:
         writer.writerow(
-            {"days" : selectedCourse[j],
-            "Block1" : "---",
-            "Block2" : "---",
-            "Block3" : "---",
-            "Block4" : "---"}
-          )
-        writer.writeheader()
-        for row in bigPlan[j]:
-          writer.writerow(
-            {"days": days[i],
-            "Block1" : row[0],
-            "Block2" : row[1],
-            "Block3" : row[2],
-            "Block4" : row[3]}
-          )
-          i += 1
+          {"days": days[i],
+          "Block1" : row[0],
+          "Block2" : row[1],
+          "Block3" : row[2],
+          "Block4" : row[3]}
+        )
+        i += 1
+  print()
 
 # check if no teacher have two classes at the same time
 
