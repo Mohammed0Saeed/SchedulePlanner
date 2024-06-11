@@ -13,7 +13,6 @@ def checkPlan(array):
 def isOnlyOne(array):
   i = 0 # counter for days
   j = 0 # counter for blocks
-
   while i < 5:
     while j < 4:
       teachers = get_elements(array, i, j)
@@ -30,6 +29,9 @@ def get_elements(array, day, block):
   for items in array:
     if items[day][block] != "-":
       tmpArr.append(items[day][block].split(":")[1])
+  
+  return tmpArr
+
   
   return tmpArr
 

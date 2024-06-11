@@ -1,11 +1,14 @@
 import csv
 import os
 from lib import teacher, course, subjects, checkers
-from random import randint
+from random import randint, choice
 
 def main():
   # clear the csv file before using 
-  os.remove("results/plan.csv")
+  try:
+    os.remove("results/plan.csv")
+  except:
+    pass
   # getting all the data of a course
   while True:
     selectedCourse = course.get_coursesNames()
@@ -84,11 +87,12 @@ def createRandomCourse(selectedCourse):
     ['-', '-', '-', '-']
   ]
   # use dictionary to store the data you need for the application
-  history = {}
+  subs = selectedCourse['subjects'].split(',')
 
-  for sub in selectedCourse['subjects'].split(','):
+  for i in range(len(subs)):
     # get the number of blocks from subjects.csv
-    classCount = int(subjects.read("dataBase/subjects.csv", sub)['count'])
+    randSub = choice(subs)
+    classCount = int(subjects.read("dataBase/subjects.csv", randSub)['count'])
     randDays = []
 
     # choose random days for the subject
@@ -110,8 +114,8 @@ def createRandomCourse(selectedCourse):
         # set j to the first chosen day
         j = randDays[c] - 1
         #check if the chosen place is free
-        if plan[j][i] == "-":
-          plan[j][i] = f"{sub}:{chosenTeachers[sub]}"
+        if plan[j][i] == "-" and chosenTeachers[randSub]:
+          plan[j][i] = f"{randSub}:{chosenTeachers[randSub]}"
           # take one from the class count to indicate that the class is given in the table
           classCount -= 1
           break
@@ -131,8 +135,17 @@ def createRandomCourse(selectedCourse):
       c += 1
       if classCount == 0:
           break
-    teacher.autoEdit("dataBase/teachers.csv", chosenTeachers[sub], "history", history)
     
+    subs = remove(subs, randSub)
+
   return plan
 
+# remove an element from an array
+def remove(arr, el):
+  newArr = []
+  for item in arr:
+    if item != el:
+      newArr.append(item)
+  return newArr
+# a bug, the algorithm of making random plan is not working
 main()
