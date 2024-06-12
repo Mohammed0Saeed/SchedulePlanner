@@ -10,17 +10,14 @@ def main():
   except:
     pass
   # getting all the data of a course
-  while True:
-    selectedCourse = course.get_coursesNames()
-    bigPlan = []
-    for _course in selectedCourse:
-      while True:
-        plan = createRandomCourse(course.read("dataBase/courses.csv", _course))
-        if checkers.checkPlan(plan):
-          bigPlan.append(plan)
-          break
-    if checkers.isOnlyOne(bigPlan) == False:
-      break
+  selectedCourse = course.get_coursesNames()
+  bigPlan = []
+  for _course in selectedCourse:
+    while True:
+      plan = createRandomCourse(course.read("dataBase/courses.csv", _course), bigPlan)
+      if checkers.checkPlan(plan):
+        bigPlan.append(plan)
+        break
   
   for j in range(len(bigPlan)):
     with open(f"results/plan.csv", "a", newline='') as newPlan:
@@ -68,7 +65,7 @@ def chooseRandomTeachers(course):
     return chosen 
 
 # create a random course and return an array
-def createRandomCourse(selectedCourse):
+def createRandomCourse(selectedCourse, bigPlan):
   # creating 2d array to store the data in form of table
   """
   the form of data is in this shape
@@ -86,6 +83,10 @@ def createRandomCourse(selectedCourse):
     ['-', '-', '-', '-'],
     ['-', '-', '-', '-']
   ]
+
+  # a counter for the checker of the plan
+  bigPlanLen = 0
+  # --- #
   # use dictionary to store the data you need for the application
   subs = selectedCourse['subjects'].split(',')
 
@@ -114,7 +115,7 @@ def createRandomCourse(selectedCourse):
         # set j to the first chosen day
         j = randDays[c] - 1
         #check if the chosen place is free
-        if plan[j][i] == "-" and chosenTeachers[randSub]:
+        if plan[j][i] == "-" and chosenTeachers[randSub] not in checkers.get_elements(bigPlan[:bigPlanLen], j, i):
           plan[j][i] = f"{randSub}:{chosenTeachers[randSub]}"
           # take one from the class count to indicate that the class is given in the table
           classCount -= 1
@@ -137,6 +138,7 @@ def createRandomCourse(selectedCourse):
           break
     
     subs = remove(subs, randSub)
+    bigPlanLen += 1
 
   return plan
 

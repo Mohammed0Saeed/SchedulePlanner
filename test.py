@@ -1,15 +1,12 @@
+def to_camel_case(text):
+    i = 0
+    text = text.replace("-", " ").replace("_", " ")
+    text = text.title()
+    text = text.replace(" ", "")
+            
+    return text
+
 def main():
-  arr = ["cat", "bird", "dog"]
-  arr = remove(arr, "cat")
-  print(arr)
-
-def remove(arr, el):
-  newArr = []
-  for item in arr:
-    if item != el:
-      newArr.append(item)
-  return newArr
-
-          
-
+    print(to_camel_case(input("")))
+  
 main()
