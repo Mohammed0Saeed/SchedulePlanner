@@ -1,6 +1,7 @@
 import csv
 import sys
 from random import randint
+from lib import subjects
 # library for teacher file functions
 
 # add a teacher to an existing list
@@ -177,6 +178,51 @@ def readAll(fileName):
     
     return dataBase
 
+# get history from the teacher
+def get_history():
+    _teachers = {}
+    for te in readAll("dataBase/teachers.csv"):
+        _teachers[te['name']] = te['history']
+    return _teachers
+
+# clear the history before the execution
+def clear_history():
+    for te in readAll("dataBase/teachers.csv"):
+        if te["history"] != "history":
+            autoEdit("dataBase/teachers.csv", te['name'], "history", "")
+
+# choose random teachers for a course
+def chooseRandomTeachers(course):
+  data = readAll("dataBase/teachers.csv")[1:]
+  courseSubjects = subjects.sort(course['subjects'].split(','))
+  #print(courseSubjects)
+  chosen = {}
+  for subj in courseSubjects:
+    tmpList = []
+    for te in data:
+      if subj in te['subjects'].split(','):
+        tmpList.append(te['name'])
+    while True:
+      randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
+      if randTeacher not in chosen:
+        chosen[subj] = randTeacher
+        break
+
+  return chosen 
+
+#
+def is_full(teacher):
+    classes = read("dataBase/teachers.csv", teacher)['history'].split("|")
+    locations = []
+    for item in classes:
+        item = item.split(":")
+        try:
+            locations.append(f"{item[2]}:{item[3]}")
+        except:
+            pass
+    return locations
+
+# choose a random course
 def choose(course):
     # show the availabe teachers
     avTeacher = {}

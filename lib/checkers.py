@@ -27,11 +27,8 @@ def isOnlyOne(array):
 def get_elements(array, day, block):
   tmpArr = []
   for items in array:
-    if items[day][block] != "-":
-      tmpArr.append(items[day][block].split(":")[1])
-  
-  return tmpArr
-
+    if array[items][day][block] != "-":
+      tmpArr.append(array[items][day][block].split(":")[1])
   
   return tmpArr
 
