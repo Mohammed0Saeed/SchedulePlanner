@@ -168,10 +168,12 @@ def createRandomCourse(selectedCourse, _teachers):
     while True:
       while True:
         # set j to the first chosen day
-        j = randDays[c] - 1
+        j = randDays[c]
+        if j >= 5:
+           i = 4
         #check if the chosen place is free
         #TODO make a better condition for the seletion and distribution
-        if plan[j][i] == "-":
+        if plan[j][i] == "-" and f"{j}:{i}" not in teacher.is_full(chosenTeachers[randSub]):
           plan[j][i] = f"{randSub}:{chosenTeachers[randSub]}"
           try:
             _teachers[chosenTeachers[randSub]] += f"{selectedCourse['name']}:{randSub}:{j}:{i}" + "|"
@@ -199,9 +201,10 @@ def createRandomCourse(selectedCourse, _teachers):
         
     subs = remove(subs, randSub)
     bigPlanLen += 1
-  
-  for te in _teachers:
-       teacher.autoEdit("dataBase/teachers.csv" ,te, "history", _teachers[te])
+
+  if checkers.checkPlan(plan):
+    for te in _teachers:
+        teacher.autoEdit("dataBase/teachers.csv" ,te, "history", _teachers[te])
 
   return plan
 
