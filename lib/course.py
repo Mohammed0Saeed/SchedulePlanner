@@ -170,7 +170,7 @@ def createRandomCourse(selectedCourse, _teachers):
         # set j to the first chosen day
         j = randDays[c]
         if j >= 5:
-           i = 4
+           j -= 1
         #check if the chosen place is free
         #TODO make a better condition for the seletion and distribution
         if plan[j][i] == "-" and f"{j}:{i}" not in teacher.is_full(chosenTeachers[randSub]):

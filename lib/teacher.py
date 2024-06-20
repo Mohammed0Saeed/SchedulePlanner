@@ -204,7 +204,7 @@ def chooseRandomTeachers(course):
         tmpList.append(te['name'])
     while True:
       randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
-      if randTeacher not in chosen:
+      if randTeacher not in chosen and len(is_full(randTeacher)) <= 2 * int(subjects.read("dataBase/subjects.csv", subj)['count']):
         chosen[subj] = randTeacher
         break
 
