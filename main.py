@@ -19,8 +19,11 @@ def main():
     while True:
       plan = course.createRandomCourse(course.read("dataBase/courses.csv", _course), _teachers)
       if checkers.checkPlan(plan):
+        print(_course, "accepted")
         bigPlan[_course] = plan
         break
+      else:
+        print(_course, "not accepted")
 
   for items in bigPlan:
     with open(f"results/plan.csv", "a", newline='') as newPlan:

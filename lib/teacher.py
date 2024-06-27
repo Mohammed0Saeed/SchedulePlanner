@@ -1,6 +1,6 @@
 import csv
 import sys
-from random import randint
+from random import randint, choice
 from lib import subjects
 # library for teacher file functions
 
@@ -203,12 +203,20 @@ def chooseRandomTeachers(course):
       if subj in te['subjects'].split(','):
         tmpList.append(te['name'])
     while True:
-      randTeacher = tmpList[randint(0, (len(tmpList) - 1))]
-      if randTeacher not in chosen and len(is_full(randTeacher)) <= 2 * int(subjects.read("dataBase/subjects.csv", subj)['count']):
+      randTeacher = choice(tmpList)
+      # TODO this function misses accurecy
+      if is_inDict(randTeacher, chosen) == False:
         chosen[subj] = randTeacher
         break
 
   return chosen 
+
+# check if an element exists within the values
+def is_inDict(element, dictionary):
+    for item in dictionary:
+        if element == dictionary[item]:
+            return True
+    return False
 
 #
 def is_full(teacher):
@@ -221,6 +229,21 @@ def is_full(teacher):
         except:
             pass
     return locations
+
+# get all history information from a teacher
+def get_teHistory(teacher):
+    teachers = readAll("dataBase/teachers.csv")
+    for te in teachers:
+        if te['name'] == teacher:
+            return te['history'].split("|")
+
+# get the courses of a specific teacher
+def get_courses(_teacher):
+  courses = []
+  for element in get_teHistory(_teacher):
+    if element.split(":")[0] not in courses and element.split(":")[0] != "":
+      courses.append(element.split(":")[0])
+  return courses
 
 # choose a random course
 def choose(course):

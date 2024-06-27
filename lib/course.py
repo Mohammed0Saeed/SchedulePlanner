@@ -144,10 +144,9 @@ def createRandomCourse(selectedCourse, _teachers):
   # --- #
   # use dictionary to store the data you need for the application
   subs = selectedCourse['subjects'].split(',')
+  chosenTeachers = teacher.chooseRandomTeachers(selectedCourse)
 
-  for i in range(len(subs)):
-    # get the number of blocks from subjects.csv
-    randSub = choice(subs)
+  for randSub in subs:
     classCount = int(subjects.read("dataBase/subjects.csv", randSub)['count'])
     randDays = []
 
@@ -160,7 +159,6 @@ def createRandomCourse(selectedCourse, _teachers):
       if len(randDays) == classCount:
         break
 
-    chosenTeachers = teacher.chooseRandomTeachers(selectedCourse)
     # fill the plan with the chosen subject
     i = 0 # counter for the blocks
     j = 0 # counter for the days
@@ -168,12 +166,13 @@ def createRandomCourse(selectedCourse, _teachers):
     while True:
       while True:
         # set j to the first chosen day
-        j = randDays[c]
+        j = randDays[c] - 1
         if j >= 5:
            j -= 1
         #check if the chosen place is free
         #TODO make a better condition for the seletion and distribution
-        if plan[j][i] == "-" and f"{j}:{i}" not in teacher.is_full(chosenTeachers[randSub]):
+        #and f"{j}:{i}" not in teacher.is_full(chosenTeachers[randSub]):
+        if plan[j][i] == "-":
           plan[j][i] = f"{randSub}:{chosenTeachers[randSub]}"
           try:
             _teachers[chosenTeachers[randSub]] += f"{selectedCourse['name']}:{randSub}:{j}:{i}" + "|"
@@ -189,7 +188,7 @@ def createRandomCourse(selectedCourse, _teachers):
         # if we are out of the index, chosen another day and chose another day
         if i > 3:
           if randDays[c] < 4: randDays[c] += 1
-          else: randDays[c] = 0
+          else: randDays[c] = 1
           i = 0
         if classCount == 0:
           break
@@ -199,9 +198,23 @@ def createRandomCourse(selectedCourse, _teachers):
       if classCount == 0:
           break
         
-    subs = remove(subs, randSub)
+    #subs = remove(subs, randSub)
     bigPlanLen += 1
 
+  with open(f"results/{selectedCourse['name']}.csv", "w", newline='') as newPlan:
+    writer = csv.DictWriter(newPlan, fieldnames=['days','Block1', 'Block2', 'Block3', 'Block4'])
+    days = ['Mo', 'Di', 'Mi', 'Do', 'Fr']
+    i = 0
+    writer.writeheader()
+    for row in plan:
+      writer.writerow(
+        {"days": days[i],
+        "Block1" : row[0],
+        "Block2" : row[1],
+        "Block3" : row[2],
+        "Block4" : row[3]}
+      )
+      i += 1
   if checkers.checkPlan(plan):
     for te in _teachers:
         teacher.autoEdit("dataBase/teachers.csv" ,te, "history", _teachers[te])
