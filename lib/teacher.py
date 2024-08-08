@@ -230,6 +230,28 @@ def is_full(teacher):
             pass
     return locations
 
+# update history
+def update_history(teacher, data):
+    teachers = readAll("dataBase/teachers.csv")
+
+    for te in teachers:
+        if te['name'] == teacher:
+            try:
+                te['history'] += f",{data}"
+            except:
+                te['history'] = data
+    
+    with open("dataBase/teachers.csv", "w", newline='') as teacherFile:
+        writer = csv.DictWriter(teacherFile, fieldnames=["name", "subjects", "course", "history", "d_prefrence", "t_prefrence"])
+        for row in teachers:
+            writer.writerow({
+                'name': row['name'],
+                'subjects': row['subjects'],
+                'course': row['course'],
+                'history': row['history'],
+                'd_prefrence': row['d_prefrence'],
+                't_prefrence': row['t_prefrence']
+            })
 # get all history information from a teacher
 def get_teHistory(teacher):
     teachers = readAll("dataBase/teachers.csv")
