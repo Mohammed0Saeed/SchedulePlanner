@@ -46,5 +46,4 @@ def repeatedValues(array):
         i += 1
       return False
         
-      
-        
+# check if each teacher has one class each block     

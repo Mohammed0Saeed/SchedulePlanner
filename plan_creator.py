@@ -1,5 +1,6 @@
 import csv
 import os
+import test
 from lib import teacher, course, subjects, checkers
 from random import randint, choice
 
@@ -11,13 +12,26 @@ def main():
     pass
   # clear the history of teachers
   teacher.clear_history()
+
+  # get the chosen teachers
+  for i in range(1000):
+    c = 0
+    chosenTeachers = teacher.choose_teachers()
+    for row in chosenTeachers:
+      if teacher.is_repeated(chosenTeachers[row].split(',')) == False:
+        c += 1
+    if c < 1:
+      for row in chosenTeachers:
+        print(row, teacher.is_repeated(chosenTeachers[row].split(',')), chosenTeachers[row])
+      print(i + 1, "very good version", c)
+      break
+
   # getting all the data of a course
   selectedCourse = course.get_coursesNames()
   bigPlan = {}
-  _teachers = teacher.get_history()
   for _course in selectedCourse:
     while True:
-      plan = course.createRandomCourse(course.read("dataBase/courses.csv", _course), _teachers)
+      plan = course.new_createRandomCourse(course.read("dataBase/courses.csv", _course), chosenTeachers[_course])
       if checkers.checkPlan(plan):
         print(_course, "accepted")
         bigPlan[_course] = plan
@@ -47,6 +61,5 @@ def main():
           "Block4" : row[3]}
         )
         i += 1
-  print()
-
-main()
+if __name__ == "__main__":
+  main()

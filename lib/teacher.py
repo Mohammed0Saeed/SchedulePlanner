@@ -191,25 +191,87 @@ def clear_history():
         if te["history"] != "history":
             autoEdit("dataBase/teachers.csv", te['name'], "history", "")
 
-# choose random teachers for a course
-def chooseRandomTeachers(course):
-  data = readAll("dataBase/teachers.csv")[1:]
-  courseSubjects = subjects.sort(course['subjects'].split(','))
-  #print(courseSubjects)
-  chosen = {}
-  for subj in courseSubjects:
-    tmpList = []
-    for te in data:
-      if subj in te['subjects'].split(','):
-        tmpList.append(te['name'])
-    while True:
-      randTeacher = choice(tmpList)
-      # TODO this function misses accurecy
-      if is_inDict(randTeacher, chosen) == False:
-        chosen[subj] = randTeacher
-        break
+def is_repeated(Arr):
+    newArr = []
 
-  return chosen 
+    for item in Arr:
+      newArr.append(item.split(":")[1])
+
+    for i in range(len(newArr)):
+      c = 0
+      for j in range(len(newArr)):
+        if newArr[i] == newArr[j]:
+          c += 1
+
+        if c > 1:
+          return False
+    return True
+
+# choose random teachers for a course
+def choose_teachers():
+  teachers = readAll("dataBase/teachers.csv")
+  subject = subjects.readAll("dataBase/specSubject.csv")
+  plan = {}
+  max_rate_teacher = {}
+  orderedSubjects = {}
+  subject_course = {}
+
+  for s in subject:
+    subject_course[s['name']] = s['course']
+
+  for t in teachers:
+    max_rate_teacher[t['name']] = 0
+
+
+  for s in subject:
+    orderedSubjects[s['name']] = s['available']
+
+  sorted_subjects = dict(sorted(orderedSubjects.items(), key=lambda x:x[1]))
+
+  #print(sorted_subjects)
+
+  for s in sorted_subjects:
+    # break
+    # go through the teachers and get the teachers of this subject
+    for c in subject_course[s].split(','):
+      tmpList = []
+      for t in teachers:
+          if s in t['subjects'].split(','):
+            tmpList.append(t['name'])
+
+      # choose one random teacher
+      while True:
+          #time.sleep(2)
+          if len(tmpList) != 0:
+            rand_teacher = choice(tmpList)
+          else:
+            break
+
+          #int(teacher.read("teachers.csv", rand_teacher)["history"])
+          if max_rate_teacher[rand_teacher] < 5:
+            max_rate_teacher[rand_teacher] += 1
+            #print(f"{rand_teacher} is chose for {s} update! {max_rate_teacher[rand_teacher]}")
+            try:
+              plan[c] += f",{s}:{rand_teacher}"
+              break
+            except:
+              plan[c] = f"{s}:{rand_teacher}"
+              break
+          else:
+            ...
+              #print(f"{rand_teacher} not chose for {s} because {max_rate_teacher[rand_teacher]}")
+
+  for row in max_rate_teacher:
+    ...
+    #print(row, max_rate_teacher[row])
+
+  with open(f"plan.csv","w") as file:
+    writer = csv.DictWriter(file, fieldnames=['course','subjects&teachers'])
+    writer.writeheader()
+    for row in plan:
+      writer.writerow({'course' : row, 'subjects&teachers' : plan[row]})
+
+  return plan
 
 # check if an element exists within the values
 def is_inDict(element, dictionary):
