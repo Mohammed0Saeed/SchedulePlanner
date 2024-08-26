@@ -76,7 +76,9 @@ def check_repeat(Arr):
   return True
 
 def main():
-  ...
+  plan = choose_teachers()
+  for row in plan:
+    print(row, plan[row])
 
 if __name__ == "__main__":
   main()

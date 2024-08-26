@@ -178,7 +178,7 @@ def new_createRandomCourse(selectedCourse, chosen):
       while True:
         # set j to the first chosen day
         j = randDays[c] - 1
-        if j >= 5:
+        if j > 4:
            j -= 1
         #check if the chosen place is free
         #TODO make a better condition for the seletion and distribution
@@ -194,9 +194,8 @@ def new_createRandomCourse(selectedCourse, chosen):
 
         # if we are out of the index, chosen another day and chose another day
         if i > 3:
-          if randDays[c] < 4: randDays[c] += 1
-          else: randDays[c] = 1
           i = 0
+          randDays[c] += 1
         if classCount == 0:
           break
       
