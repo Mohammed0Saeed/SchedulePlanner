@@ -2,24 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/dataBase/courses.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataBase/courses.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataBase/teachers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataBase/teachers.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/checkers.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/checkers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/course.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/course.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/teacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/teacher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/GA1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/GF1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/MA1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/MF1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/TA1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/TA2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/TF1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/TF2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/WA2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/WF2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/course_plan.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/course_plan.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/courses.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/specSubject.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/subjects.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/teachers.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/checkers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/course.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/subjects.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/teacher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plan.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plan_creator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/course_plan.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/updates.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +42,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.26053.29" />
+        <option value="bundled-python-sdk-b1dbf8ef85a6-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.26053.29" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -62,8 +72,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714913973222</updated>
+      <workItem from="1743506042723" duration="332000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
