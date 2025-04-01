@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/dataBase/courses.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataBase/specSubject.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataBase/subjects.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataBase/teachers.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/checkers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/course.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/subjects.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/teacher.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plan.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plan_creator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/course_plan.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/updates.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="Delete the old version" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,8 +61,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714913973222</updated>
-      <workItem from="1743506042723" duration="332000" />
+      <workItem from="1743506042723" duration="735000" />
     </task>
+    <task id="LOCAL-00001" summary="Delete the old version">
+      <option name="closed" value="true" />
+      <created>1743506414447</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743506414447</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,5 +87,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Delete the old version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete the old version" />
   </component>
 </project>
