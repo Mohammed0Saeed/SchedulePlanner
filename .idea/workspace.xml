@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="plan class">
+    <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="adjustments to plan">
       <change beforePath="$PROJECT_DIR$/classes/plan.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/plan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1714913973222</updated>
       <workItem from="1743506042723" duration="834000" />
-      <workItem from="1743708243061" duration="260000" />
+      <workItem from="1743708243061" duration="526000" />
     </task>
     <task id="LOCAL-00001" summary="Delete the old version">
       <option name="closed" value="true" />
@@ -102,7 +102,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743708274448</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="adjustments to plan">
+      <option name="closed" value="true" />
+      <created>1743708626886</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743708626886</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +130,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Delete the old version" />
     <MESSAGE value="plan class" />
-    <option name="LAST_COMMIT_MESSAGE" value="plan class" />
+    <MESSAGE value="adjustments to plan" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjustments to plan" />
   </component>
 </project>

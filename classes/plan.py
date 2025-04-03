@@ -34,4 +34,4 @@ class Plan:
         self.courses.remove(course)
 
     def __str__(self):
-        print(self.name, "has the courses: ", self.courses)
+        return f"{self.name} has the courses: {self.courses}"
