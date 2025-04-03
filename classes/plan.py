@@ -4,33 +4,33 @@ class Plan:
         self.name = name
         self.courses = courses
 
-    @getter
-    def getName(self):
+    @property
+    def name(self):
         return self.name
-    @getter
-    def getCourses(self):
+    @property
+    def courses(self):
         return self.courses
 
-    @setter
-    def setName(self, name):
+    @name.setter
+    def name(self, name):
         self.name = name
 
-    @setter
-    def setCourses(self, courses):
+    @courses.setter
+    def courses(self, courses):
         self.courses = courses
 
     """
     add a course to the plan
     @:param course: course to add
     """
-    def addCourse(self, course):
+    def add_course(self, course):
         self.courses.append(course)
 
     """
     remove a course from the plan
     @:param course: course to remove
     """
-    def removeCourse(self, course):
+    def remove_course(self, course):
         self.courses.remove(course)
 
     def __str__(self):
