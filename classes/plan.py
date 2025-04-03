@@ -1,3 +1,4 @@
+
 class Plan:
     def __init__(self, name, courses):
         self.name = name
