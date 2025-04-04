@@ -12,12 +12,12 @@ class Plan:
         return self.courses
 
     @name.setter
-    def name(self, name):
-        self.name = name
+    def name(self, new_name):
+        self._name = new_name
 
     @courses.setter
-    def courses(self, courses):
-        self.courses = courses
+    def courses(self, new_courses):
+        self._courses = new_courses
 
     """
     add a course to the plan
