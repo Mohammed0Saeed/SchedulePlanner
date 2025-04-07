@@ -1,15 +1,15 @@
-
 class Plan:
     def __init__(self, name, courses):
-        self.name = name
-        self.courses = courses
+        self._name = name
+        self._courses = courses
 
     @property
     def name(self):
-        return self.name
+        return self._name
+
     @property
     def courses(self):
-        return self.courses
+        return self._courses
 
     @name.setter
     def name(self, new_name):
@@ -24,14 +24,14 @@ class Plan:
     @:param course: course to add
     """
     def add_course(self, course):
-        self.courses.append(course)
+        self._courses.append(course)
 
     """
     remove a course from the plan
     @:param course: course to remove
     """
     def remove_course(self, course):
-        self.courses.remove(course)
+        self._courses.remove(course)
 
     def __str__(self):
-        return f"{self.name} has the courses: {self.courses}"
+        return f"{self._name} has the courses: {self._courses}"
