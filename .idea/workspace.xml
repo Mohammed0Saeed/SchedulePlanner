@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="add teacher class + some adjustments" />
+    <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="add dataBase samples">
+      <change afterPath="$PROJECT_DIR$/classes/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/course.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/course.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +34,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Mohammed0Saeed/SchedulePlanner.git&quot;,
-    &quot;accountId&quot;: &quot;aa3ee71d-8a41-42a5-b78e-8db3d331a4ad&quot;
+    &quot;accountId&quot;: &quot;a6378941-dd03-4eb7-ab07-496a21959fb6&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -50,6 +55,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kakabushu/PycharmProjects/SchedulePlanner&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -58,6 +64,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dataBase" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -78,6 +89,8 @@
       <workItem from="1743708243061" duration="1424000" />
       <workItem from="1743746893618" duration="1033000" />
       <workItem from="1744012710204" duration="505000" />
+      <workItem from="1744024319190" duration="867000" />
+      <workItem from="1744110702010" duration="968000" />
     </task>
     <task id="LOCAL-00001" summary="Delete the old version">
       <option name="closed" value="true" />
@@ -151,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744012947818</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add dataBase samples">
+      <option name="closed" value="true" />
+      <created>1744024415385</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1744024415385</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,9 +198,10 @@
     <MESSAGE value="add Block class" />
     <MESSAGE value="add Subject class" />
     <MESSAGE value="add teacher class + some adjustments" />
-    <option name="LAST_COMMIT_MESSAGE" value="add teacher class + some adjustments" />
+    <MESSAGE value="add dataBase samples" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dataBase samples" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SchedulePlanner$main.coverage" NAME="main Coverage Results" MODIFIED="1744012782909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SchedulePlanner$main.coverage" NAME="main Coverage Results" MODIFIED="1744111618426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

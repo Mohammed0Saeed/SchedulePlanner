@@ -1,5 +1,5 @@
-from classes import plan, course, weekday
+import csv
 
-newPlan = plan.Plan("name", [])
+from classes import util, plan, course, subject
 
-print(newPlan)
+courses = util.load_courses("courses.csv")
