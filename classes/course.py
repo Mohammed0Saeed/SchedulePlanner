@@ -4,7 +4,7 @@ from mesonbuild.mlog import exception
 
 
 class Course:
-    def __init__(self, name, subjects, weekly_count,weekdays):
+    def __init__(self, name, subjects, weekly_count, weekdays):
         self._name = name
         self._subjects = subjects
         self._weekly_count = weekly_count
@@ -81,4 +81,4 @@ class Course:
         self._weekdays.remove(weekday)
 
     def __str__(self):
-        return f"the course is: {self._name}"
+        return f"the course is: {self._name} and has {self._weekly_count} blocks a week"

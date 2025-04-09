@@ -10,7 +10,7 @@ def load_courses(file_name):
     courses = []
     with open(f"dataBase/{file_name}") as inputFile:
         for row in csv.reader(inputFile):
-            courses.append(course.Course(row[0], row[1].split(";"), "null"))
+            courses.append(course.Course(row[0], row[1].split(";"), row[2],"null"))
 
     return courses
 
