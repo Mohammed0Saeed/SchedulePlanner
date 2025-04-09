@@ -4,9 +4,10 @@ from mesonbuild.mlog import exception
 
 
 class Course:
-    def __init__(self, name, subjects, weekdays):
+    def __init__(self, name, subjects, weekly_count,weekdays):
         self._name = name
         self._subjects = subjects
+        self._weekly_count = weekly_count
         self._weekdays = weekdays
 
     @property
@@ -24,6 +25,14 @@ class Course:
     @subjects.setter
     def subjects(self, new_subjects):
         self._subjects = new_subjects
+
+    @property
+    def weekly_count(self):
+        return self._weekly_count
+
+    @weekly_count.setter
+    def weekly_count(self, new_weekly_count):
+        self._weekly_count = new_weekly_count
 
     @property
     def weekdays(self):

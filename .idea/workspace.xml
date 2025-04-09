@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="add dataBase samples">
-      <change afterPath="$PROJECT_DIR$/classes/util.py" afterDir="false" />
+    <list default="true" id="14cf6312-58ab-407a-88bc-b75d8c3fd067" name="Changes" comment="add util library + adjustments to some classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/course.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/course.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/teacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/teacher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +91,8 @@
       <workItem from="1743746893618" duration="1033000" />
       <workItem from="1744012710204" duration="505000" />
       <workItem from="1744024319190" duration="867000" />
-      <workItem from="1744110702010" duration="968000" />
+      <workItem from="1744110702010" duration="1005000" />
+      <workItem from="1744197434243" duration="497000" />
     </task>
     <task id="LOCAL-00001" summary="Delete the old version">
       <option name="closed" value="true" />
@@ -172,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744024415385</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add util library + adjustments to some classes">
+      <option name="closed" value="true" />
+      <created>1744120929429</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744120929429</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +209,8 @@
     <MESSAGE value="add Subject class" />
     <MESSAGE value="add teacher class + some adjustments" />
     <MESSAGE value="add dataBase samples" />
-    <option name="LAST_COMMIT_MESSAGE" value="add dataBase samples" />
+    <MESSAGE value="add util library + adjustments to some classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add util library + adjustments to some classes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SchedulePlanner$main.coverage" NAME="main Coverage Results" MODIFIED="1744111618426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
