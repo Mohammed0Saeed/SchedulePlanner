@@ -1,12 +1,10 @@
 import csv
 
-from classes import util, plan, course, subject
+from classes import util
 
 courses = util.load_courses("courses.csv")
 teachers = util.load_teachers("teachers.csv")
 
-for c in courses:
-    print(c)
+pln = courses[1].create_course_plan()
 
-for t in teachers:
-    print(t)
+print(pln)

@@ -1,6 +1,6 @@
-import csv
-
+from classes import util, weekday
 from mesonbuild.mlog import exception
+import csv
 
 
 class Course:
@@ -71,7 +71,7 @@ class Course:
     @:param weekday: the weekday to be added
     """
     def add_weekday(self, weekday):
-        self._weekdays.append(weekday)
+        self._weekdays += f"{weekday},"
 
     """
     Removes a certain weekday from a course
@@ -79,6 +79,32 @@ class Course:
     """
     def remove_weekday(self, weekday):
         self._weekdays.remove(weekday)
+
+    def create_course_plan(self):
+        # choose the teachers
+        chosen_teachers = util.choose_teachers(self)
+
+        # create the weekdays
+        days = ["MON", "TUE", "WED", "THU", "FRI"]
+        week = []
+        for day in days:
+            week.append(weekday.Weekday(day, ""))
+
+        # create blocks to fill
+        for day in week:
+            day.create_empty_blocks()
+
+        # put each subject in its block
+        for s in chosen_teachers:
+            rand_days = util.choose_days_randomly(util.get_subject_count(s), week)
+            for day in rand_days:
+                day.fill_first_block(s, chosen_teachers[s])
+
+        # add the filled days in the plan
+        for day in week:
+            self.add_weekday(day)
+
+
 
     def __str__(self):
         return f"the course is: {self._name} and has {self._weekly_count} blocks a week"

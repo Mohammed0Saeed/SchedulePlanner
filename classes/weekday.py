@@ -1,3 +1,5 @@
+from classes import block
+
 class Weekday:
     def __init__(self, name, blocks):
         self._name = name
@@ -32,6 +34,50 @@ class Weekday:
     """
     def remove_block(self, block):
         self._blocks.remove(block)
+
+    """
+    Finds the first free block and fill it
+    """
+    def find_free_block(self):
+        for b in self.blocks:
+            if b.is_free():
+                return b
+
+        return None
+
+    """
+    Create a new weekday with four blocks
+    """
+    def create_empty_blocks(self):
+        for i in range(0, 3):
+            self._blocks += f",{block.Block(i, "#", "#")}"
+
+    """
+    Checks if the weekday is full
+    @:return True: if the day is full
+    """
+    def is_full(self):
+        for b in self.blocks:
+            if b.is_free():
+                return False
+
+        return True
+
+    """
+    Fills the first available block in the day
+    :param subject: the chosen subject
+    :param teacher: the chosen teacher
+    :return: None
+    """
+    def fill_first_block(self, subject, teacher):
+        if self.is_full():
+            raise Exception(f"{self._name} has no free blocks")
+
+        for b in self.blocks:
+            if b.is_free():
+                b.subject = subject
+                b.teacher = teacher
+                break
 
     def __str__(self):
         return f"Weekday {self._name} has these blocks {self._blocks}"

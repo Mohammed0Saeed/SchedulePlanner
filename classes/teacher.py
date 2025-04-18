@@ -28,8 +28,21 @@ class Teacher:
     def history(self, history):
         self._history = history
 
-    def add_to_history(self, course, block, subject):
-        self._history.append(f"{course}:{block}:{subject}")
+    """
+    adds a course to the history of courses
+    @:param course: course name
+    """
+    def add_to_history(self, course):
+        #self._history.append(f"{course}:{block}:{subject}")
+        self._history += (f"{course};")
+
+    """
+    checks if a course has been already registered
+    @:param course: course name
+    @:return true: if course is in the history
+    """
+    def course_in_history(self, course):
+        return course in self._history.split(";")
 
     def __str__(self):
         return f"{self.name} teaches: ({self.subjects})"

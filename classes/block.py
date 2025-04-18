@@ -28,5 +28,12 @@ class Block:
     def subject(self, new_subject):
         self._subject = new_subject
 
+    """
+    Checks if the block is free
+    @:return True: if block is free
+    """
+    def is_free(self):
+        return self._teacher == "#"
+
     def __str__(self):
         return f"{self._teacher}|{self._subject}"
