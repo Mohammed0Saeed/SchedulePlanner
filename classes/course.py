@@ -8,7 +8,7 @@ class Course:
         self._name = name
         self._subjects = subjects
         self._weekly_count = weekly_count
-        self._weekdays = weekdays
+        self._weekdays = []
 
     @property
     def name(self):
@@ -37,10 +37,6 @@ class Course:
     @property
     def weekdays(self):
         return self._weekdays
-
-    @weekdays.setter
-    def weekdays(self, new_weekdays):
-        self._weekdays = new_weekdays
 
     """
     Adds a subject in the csv file of the course
@@ -71,7 +67,7 @@ class Course:
     @:param weekday: the weekday to be added
     """
     def add_weekday(self, weekday):
-        self._weekdays += f"{weekday},"
+        self._weekdays.append(weekday)
 
     """
     Removes a certain weekday from a course
@@ -80,6 +76,9 @@ class Course:
     def remove_weekday(self, weekday):
         self._weekdays.remove(weekday)
 
+    """
+    Creates a plan for a week for the course
+    """
     def create_course_plan(self):
         # choose the teachers
         chosen_teachers = util.choose_teachers(self)
@@ -104,6 +103,18 @@ class Course:
         for day in week:
             self.add_weekday(day)
 
+    """
+    Print the plan in the console
+    """
+    def print_course_plan(self):
+        print(f"### {self._name} ###")
+        for day in self.weekdays:
+            for b in day.blocks:
+                if b.is_free():
+                   print("empty | ", end="")
+                else:
+                    print(f"{b.subject}:{b.teacher.name} | ", end="")
+            print()
 
 
     def __str__(self):

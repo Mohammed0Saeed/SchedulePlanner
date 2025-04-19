@@ -36,4 +36,4 @@ class Block:
         return self._teacher == "#"
 
     def __str__(self):
-        return f"{self._teacher}|{self._subject}"
+        return f"{self._teacher.name}|{self._subject}"

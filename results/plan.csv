@@ -1,0 +1,21 @@
+### Course A ###
+DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
+MON,Alice|Chemistry,Dave|History,Eve|Math,#
+TUE,Alice|Chemistry,Carol|Physics,Bob|English,Dave|History
+WED,Carol|Physics,Bob|English,Eve|Math,#
+THU,Carol|Physics,Bob|English,Eve|Math,#
+FRI,Bob|English,Dave|History,#,#
+### Course B ###
+DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
+MON,Bob|English,Eve|Computer Science,Alice|Math,#
+TUE,Carol|Biology,Dave|Geography,Alice|Math,#
+WED,Dave|Geography,Eve|Computer Science,Alice|Math,#
+THU,Bob|English,#,#,#
+FRI,Carol|Biology,Bob|English,Eve|Computer Science,#
+### Course C ###
+DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
+MON,Grace|Music,Alice|Physics,Eve|Computer Science,Bob|Math
+TUE,Bob|Math,#,#,#
+WED,Alice|Physics,Frank|Art,Eve|Computer Science,#
+THU,Alice|Physics,Bob|Math,#,#
+FRI,Grace|Music,Eve|Computer Science,#,#

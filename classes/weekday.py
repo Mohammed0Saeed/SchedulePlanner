@@ -3,7 +3,7 @@ from classes import block
 class Weekday:
     def __init__(self, name, blocks):
         self._name = name
-        self._blocks = blocks
+        self._blocks = []
 
     @property
     def name(self):
@@ -16,10 +16,6 @@ class Weekday:
     @property
     def blocks(self):
         return self._blocks
-
-    @blocks.setter
-    def blocks(self, new_blocks):
-        self._blocks = new_blocks
 
     """
     Adds a block to the weekday
@@ -49,8 +45,8 @@ class Weekday:
     Create a new weekday with four blocks
     """
     def create_empty_blocks(self):
-        for i in range(0, 3):
-            self._blocks += f",{block.Block(i, "#", "#")}"
+        for i in range(4):
+            self._blocks.append(block.Block(i, "#", "#"))
 
     """
     Checks if the weekday is full

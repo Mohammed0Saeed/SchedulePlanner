@@ -2,7 +2,7 @@ class Teacher:
     def __init__(self, name, subjects, history):
         self._name = name
         self._subjects = subjects
-        self._history = history
+        self._history = []
 
     @property
     def name(self):
@@ -34,7 +34,7 @@ class Teacher:
     """
     def add_to_history(self, course):
         #self._history.append(f"{course}:{block}:{subject}")
-        self._history += (f"{course};")
+        self._history.append(course)
 
     """
     checks if a course has been already registered
@@ -42,7 +42,7 @@ class Teacher:
     @:return true: if course is in the history
     """
     def course_in_history(self, course):
-        return course in self._history.split(";")
+        return course in self._history
 
     def __str__(self):
         return f"{self.name} teaches: ({self.subjects})"

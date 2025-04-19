@@ -1,10 +1,7 @@
-import csv
+from classes import plan, util
 
-from classes import util
+newPlan = plan.Plan("UNIVERSITY", util.load_courses("courses.csv"))
 
-courses = util.load_courses("courses.csv")
-teachers = util.load_teachers("teachers.csv")
-
-pln = courses[1].create_course_plan()
-
-print(pln)
+newPlan.create_plan()
+newPlan.print_plan()
+newPlan.export_plan("plan.csv")

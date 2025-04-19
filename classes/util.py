@@ -13,7 +13,7 @@ def load_courses(file_name):
         for row in csv.reader(inputFile):
             courses.append(course.Course(row[0], row[1].split(";"), row[2],"null"))
 
-    return courses
+    return courses[1:]
 
 """
 load the subjects to the RAM
@@ -26,7 +26,7 @@ def load_subjects(file_name):
         for row in csv.reader(inputFile):
             subjects.append(subject.Subject(row[0], row[1]))
 
-    return subjects
+    return subjects[1:]
 
 """
 load the teachers to the RAM
@@ -39,7 +39,7 @@ def load_teachers(file_name):
         for row in csv.reader(inputFile):
             teachers.append(teacher.Teacher(row[0], row[1].split(";"), "null"))
 
-    return teachers
+    return teachers[1:]
 
 """
 choose teachers for each course
@@ -55,7 +55,7 @@ def choose_teachers(_course):
 
     for subject in subjects:
         for _teacher in teachers:
-            if subject in _teacher.subjects and len(_teacher.history.split(";")) < 2 and not _teacher.course_in_history(_course):
+            if subject in _teacher.subjects and len(_teacher.history) < 2 and not _teacher.course_in_history(_course):
                 subject_teacher[subject] = _teacher
                 _teacher.add_to_history(_course)
                 break
