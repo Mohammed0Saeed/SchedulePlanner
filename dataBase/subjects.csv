@@ -1,4 +1,4 @@
-name,blocks per week
+name,blocks_per_week
 Math,5
 Physics,4
 Chemistry,3
@@ -9,3 +9,11 @@ Geography,3
 Computer Science,5
 Art,2
 Music,2
+Philosophy,2
+Economics,3
+Programming,4
+Drama,2
+Statistics,3
+Design,2
+Environmental Science,3
+Physical Education,2

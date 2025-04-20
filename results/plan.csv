@@ -1,21 +1,56 @@
-### Course A ###
+### Science Explorer ###
 DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
-MON,Alice|Chemistry,Dave|History,Eve|Math,#
-TUE,Alice|Chemistry,Carol|Physics,Bob|English,Dave|History
-WED,Carol|Physics,Bob|English,Eve|Math,#
-THU,Carol|Physics,Bob|English,Eve|Math,#
-FRI,Bob|English,Dave|History,#,#
-### Course B ###
+MON,Alice|Math,Alice|Math,#,#
+TUE,Alice|Chemistry,Bob|History,Alice|Math,#
+WED,Bob|History,Bob|History,Bob|English,#
+THU,Alice|Chemistry,Alice|Chemistry,Alice|Physics,#
+FRI,Alice|Physics,Alice|Physics,Bob|English,Bob|English
+### World Connect ###
 DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
-MON,Bob|English,Eve|Computer Science,Alice|Math,#
-TUE,Carol|Biology,Dave|Geography,Alice|Math,#
-WED,Dave|Geography,Eve|Computer Science,Alice|Math,#
-THU,Bob|English,#,#,#
-FRI,Carol|Biology,Bob|English,Eve|Computer Science,#
-### Course C ###
+MON,Carol|Biology,Dave|Geography,Eve|Computer Science,Bob|English
+TUE,Carol|Biology,Dave|Geography,Eve|Computer Science,Bob|English
+WED,Bob|English,Bob|English,Alice|Math,#
+THU,Eve|Computer Science,Eve|Computer Science,Alice|Math,Alice|Math
+FRI,Carol|Biology,Carol|Biology,Dave|Geography,#
+### Creative Minds ###
 DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
-MON,Grace|Music,Alice|Physics,Eve|Computer Science,Bob|Math
-TUE,Bob|Math,#,#,#
-WED,Alice|Physics,Frank|Art,Eve|Computer Science,#
-THU,Alice|Physics,Bob|Math,#,#
-FRI,Grace|Music,Eve|Computer Science,#,#
+MON,Alice|Physics,Eve|Computer Science,Alice|Math,Alice|Math
+TUE,Grace|Music,#,#,#
+WED,Alice|Physics,Eve|Computer Science,Alice|Math,#
+THU,Alice|Physics,Alice|Physics,Frank|Art,Frank|Art
+FRI,Grace|Music,Eve|Computer Science,Eve|Computer Science,Alice|Math
+### Humanities Path ###
+DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
+MON,Carol|Biology,Bob|History,Bob|English,Alice|Math
+TUE,Bob|English,Bob|English,Alice|Math,Alice|Math
+WED,Bob|History,Bob|English,#,#
+THU,Carol|Biology,Frank|Art,#,#
+FRI,Carol|Biology,Carol|Biology,Frank|Art,Bob|History
+### Global Discoverer ###
+DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
+MON,Alice|Chemistry,#,#,#
+TUE,Alice|Chemistry,Alice|Physics,Dave|Geography,Bob|English
+WED,Alice|Physics,Grace|Music,Dave|Geography,Dave|Geography
+THU,Alice|Chemistry,Alice|Physics,Bob|English,Bob|English
+FRI,Alice|Physics,Grace|Music,#,#
+### Tech Fusion ###
+DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
+MON,Eve|Computer Science,Alice|Math,Alice|Math,#
+TUE,Frank|Art,Carol|Biology,Carol|Biology,Alice|Math
+WED,Grace|Music,Eve|Computer Science,Alice|Math,#
+THU,Eve|Computer Science,Eve|Computer Science,#,#
+FRI,Grace|Music,Eve|Computer Science,Frank|Art,Carol|Biology
+### Knowledge Hub ###
+DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
+MON,Alice|Chemistry,Dave|Geography,Bob|English,Alice|Math
+TUE,Alice|Physics,Alice|Math,Alice|Math,#
+WED,Alice|Physics,Bob|English,Alice|Math,#
+THU,Alice|Chemistry,Alice|Chemistry,Dave|Geography,Bob|English
+FRI,Alice|Physics,Alice|Physics,Dave|Geography,Bob|English
+### Digital Legacy ###
+DAY,BLOCK1,BLOCK2,BLOCK3,BLOCK4
+MON,Bob|History,Bob|History,#,#
+TUE,Alice|Physics,Bob|English,Bob|English,#
+WED,Grace|Music,Alice|Physics,Eve|Computer Science,Eve|Computer Science
+THU,Grace|Music,#,#,#
+FRI,Alice|Physics,Alice|Physics,Eve|Computer Science,Bob|English

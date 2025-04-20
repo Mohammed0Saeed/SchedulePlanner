@@ -1,11 +1,21 @@
 name,subjects,history
-Alice,Math;Physics;Chemistry,null
-Bob,Math;English;History,null
-Carol,Physics;Biology;Chemistry,null
-Dave,English;Geography;History,null
-Eve,Biology;Computer Science;Math,null
-Frank,Computer Science;Math;Art,null
-Grace,Art;Music;Geography,null
-Heidi,Music;English;Art,null
-Ivan,Physics;Computer Science;Math,null
-Judy,Geography;History;Biology,null
+Alice,Math;Physics;Chemistry,
+Bob,Math;English;History,
+Carol,Physics;Biology;Chemistry,
+Dave,English;Geography;History,
+Eve,Biology;Computer Science;Math,
+Frank,Computer Science;Math;Art,
+Grace,Art;Music;Geography,
+Heidi,Music;English;Art,
+Ivan,Physics;Computer Science;Math,
+Judy,Geography;History;Biology,
+Kevin,Math;English;Music,
+Laura,Computer Science;Art;Physics,
+Mike,History;Math;Biology,
+Nina,Chemistry;Geography;English,
+Oscar,Physics;Art;Music,
+Pam,English;Math;Computer Science,
+Quinn,Geography;Biology;History,
+Ruth,Art;Chemistry;Biology,
+Sam,Music;Computer Science;Math,
+Tina,English;History;Geography

@@ -1,4 +1,9 @@
-name,subjects,weekly blocks
-Course A,Math;Physics;Chemistry;English;History,25
-Course B,Biology;Math;Geography;English;Computer Science,25
-Course C,Physics;Math;Art;Music;Computer Science,25
+name,subjects,weekly_blocks
+Science Explorer,Math;Physics;Chemistry;English;History,25
+World Connect,Biology;Math;Geography;English;Computer Science,25
+Creative Minds,Physics;Math;Art;Music;Computer Science,25
+Humanities Path,English;Biology;Art;Math;History,25
+Global Discoverer,Chemistry;Physics;Geography;Music;English,25
+Tech Fusion,Math;Computer Science;Art;Music;Biology,25
+Knowledge Hub,Geography;English;Chemistry;Math;Physics,25
+Digital Legacy,Music;Physics;Computer Science;English;History,25
