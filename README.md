@@ -1,2 +1,3 @@
-# SchedulePlanner
-SchedulePlanner is python code that takes three csv tables of the teachers, subjects, and courses. From these three tables, this code will make a random plan according to the weekly plan of the school or the university. If you want to try this code, you should follow the same structure of the csv tables. If there is any suggestions or inqueries, you can start a discussion :)
+SchedulePlanner creates a weekly plan for a certain number of courses depending on the subjects, teachers and weekly blocks.
+
+V1.0 -> creates a plan successfully, but some adjustments are still needed
