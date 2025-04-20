@@ -32,21 +32,22 @@ class Weekday:
         self._blocks.remove(block)
 
     """
-    Finds the first free block and fill it
+    Returns the available blocks
+    @:return free_blocks: the available blocks
     """
-    def find_free_block(self):
+    def free_blocks(self):
+        free_blocks = []
         for b in self.blocks:
             if b.is_free():
-                return b
-
-        return None
+                free_blocks.append(b)
+        return free_blocks
 
     """
     Create a new weekday with four blocks
     """
     def create_empty_blocks(self):
-        for i in range(4):
-            self._blocks.append(block.Block(i, "#", "#"))
+        for i in range(5):
+            self._blocks.append(block.Block(f"{i}:{self._name}", "#", "#"))
 
     """
     Checks if the weekday is full
@@ -65,14 +66,15 @@ class Weekday:
     :param teacher: the chosen teacher
     :return: None
     """
-    def fill_first_block(self, subject, teacher):
+    def fill_first_block(self, subject, teacher, _course):
         if self.is_full():
             raise Exception(f"{self._name} has no free blocks")
 
         for b in self.blocks:
-            if b.is_free():
+            if b.is_free() and teacher.is_available(b):
                 b.subject = subject
                 b.teacher = teacher
+                teacher.add_to_history(_course, b, subject)
                 break
 
     def __str__(self):

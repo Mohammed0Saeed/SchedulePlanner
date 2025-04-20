@@ -97,7 +97,7 @@ class Course:
         for s in chosen_teachers:
             rand_days = util.choose_days_randomly(util.get_subject_count(s), week)
             for day in rand_days:
-                day.fill_first_block(s, chosen_teachers[s])
+                day.fill_first_block(s, chosen_teachers[s], self._name)
 
         # add the filled days in the plan
         for day in week:

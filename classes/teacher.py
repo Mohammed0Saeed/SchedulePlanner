@@ -32,9 +32,26 @@ class Teacher:
     adds a course to the history of courses
     @:param course: course name
     """
-    def add_to_history(self, course):
-        #self._history.append(f"{course}:{block}:{subject}")
-        self._history.append(course)
+    def add_to_history(self, course, block, subject):
+        self._history.append(f"{course}:{block.index}:{subject}")
+
+    """
+    Returns the indices of the courses that the teacher has registered
+    @:return indices: the indices of the courses that the teacher has registered
+    """
+    def get_indices(self):
+        indices = []
+        for data in self._history:
+            indices.append(data.split(":")[1])
+        return indices
+
+    """
+    Checks if the block is available for the teacher
+    @:param block: the block to check
+    @:return true: if the block is available for the teacher
+    """
+    def is_available(self, block):
+        return block.index not in self.get_indices()
 
     """
     checks if a course has been already registered

@@ -57,7 +57,6 @@ def choose_teachers(_course):
         for _teacher in teachers:
             if subject in _teacher.subjects and len(_teacher.history) < 2 and not _teacher.course_in_history(_course):
                 subject_teacher[subject] = _teacher
-                _teacher.add_to_history(_course)
                 break
 
     return subject_teacher
@@ -86,11 +85,20 @@ Chooses n days randomly
 @:return rand_days: list of chosen days
 """
 def choose_days_randomly(n, days):
+    # best case scenario when there are more than two days with free blocks
     rand_days = []
     for i in range(int(n)):
         choice = random.choice(days)
         if choice not in rand_days and not choice.is_full():
             rand_days.append(choice)
+
+    if len(rand_days) < int(n):
+        dict_days = {}
+        for d in rand_days:
+            dict_days[d] = len(d.free_blocks())
+
+        sorted_dict = sorted(dict_days, key=dict_days.get, reverse=True)
+        rand_days.append(sorted_dict[0])
 
     return rand_days
 
